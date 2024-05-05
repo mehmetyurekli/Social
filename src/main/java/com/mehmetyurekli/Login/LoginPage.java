@@ -2,8 +2,7 @@ package com.mehmetyurekli.Login;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
-import com.mehmetyurekli.Services.DatabaseService;
-import com.mehmetyurekli.Services.MyDbService;
+import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.PasswordUtility;
 import net.miginfocom.swing.MigLayout;
 
@@ -18,8 +17,7 @@ public class LoginPage extends JPanel {
     private JTextField username;
     private JPasswordField password;
     private JButton loginBtn;
-    //private JCheckBox remember;
-    private DatabaseService service;
+    MongoRepository<User> users;
 
     public LoginPage() {
         init();
@@ -30,8 +28,7 @@ public class LoginPage extends JPanel {
         username = new JTextField();
         password = new JPasswordField();
         loginBtn = new JButton("Login");
-        //remember = new JCheckBox("Remember me");
-        service = new MyDbService().load("Social");
+        this.users = new MongoRepository<>("Social", "Users", User.class);
 
         JPanel panel = new JPanel(new MigLayout("wrap, fillx", "[fill,300]"));
         panel.setBackground(new Color(69, 69, 69));
@@ -46,9 +43,9 @@ public class LoginPage extends JPanel {
 
         panel.add(new JLabel("Username"), "gapy 5");
         panel.add(username);
+
         panel.add(new JLabel("Password"), "gapy 5");
         panel.add(password);
-        //panel.add(remember);
         password.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -63,7 +60,7 @@ public class LoginPage extends JPanel {
         loginBtn.setBackground(new Color(45, 110, 0));
         panel.add(loginBtn, "gaptop 15");
         loginBtn.addActionListener(e -> {
-            User user = service.getUser(username.getText());
+            User user = users.getSingle("username", username.getText());
             if (username.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "You must enter your username!");
             }
@@ -82,21 +79,16 @@ public class LoginPage extends JPanel {
             }
         });
 
-
         JButton registerBtn = new JButton("<html><u><a style=\"color:#00B5DDFF;\">Don't have an account? Sign up here.</a></u></html>");
         registerBtn.setContentAreaFilled(false);
         registerBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
         registerBtn.addActionListener(e -> {
             LoginManager.getInstance().showPage(new RegisterPage());
         });
-
         panel.add(registerBtn, "gapbottom 0, gaptop 0, align center");
+
         this.add(panel);
 
-        registerBtn.addActionListener(e -> {
-            LoginManager.getInstance().showPage(new RegisterPage());
-        });
 
     }
 }

@@ -2,9 +2,8 @@ package com.mehmetyurekli.Login;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
-import com.mehmetyurekli.Services.DatabaseService;
-import com.mehmetyurekli.Services.MyDbService;
 import com.mehmetyurekli.Builders.UserBuilder;
+import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.PasswordUtility;
 import net.miginfocom.swing.MigLayout;
 
@@ -22,7 +21,7 @@ public class RegisterPage extends JPanel {
     private JPasswordField confirmPassword;
     private JButton registerBtn;
 
-    private DatabaseService service;
+    MongoRepository<User> users;
 
 
     public RegisterPage() {
@@ -39,7 +38,7 @@ public class RegisterPage extends JPanel {
         password = new JPasswordField();
         confirmPassword = new JPasswordField();
         registerBtn = new JButton("Sign Up");
-        service = new MyDbService().load("Social");
+        this.users = new MongoRepository<>("Social", "Users", User.class);
 
 
         JPanel panel = new JPanel(new MigLayout("wrap, fillx", "[fill, 250][fill, 250]"));
@@ -107,7 +106,7 @@ public class RegisterPage extends JPanel {
                 else if (password.getPassword() == null || password.getPassword().length < 8) {
                     JOptionPane.showMessageDialog(this, "Minimum password length is 8!");
                 }
-                else if (service.getUser(username.getText()) != null) {
+                else if (users.getSingle("username", username.getText()) != null) {
                     JOptionPane.showMessageDialog(this, "Username is already taken.");
                 }
                 else {
@@ -118,7 +117,7 @@ public class RegisterPage extends JPanel {
                             .withEmail(email.getText())
                             .withPassword(PasswordUtility.hashPassword(password.getPassword()))
                             .build();
-                    service.insertUser(u);
+                    users.insertOne(u);
                     JOptionPane.showMessageDialog(this, "Successful! You can log in now.");
                 }
 

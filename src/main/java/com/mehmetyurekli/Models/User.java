@@ -1,8 +1,14 @@
 package com.mehmetyurekli.Models;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.bson.types.ObjectId;
+
 import java.util.List;
 
 public class User {
+
+    @BsonProperty("_id")
+    private ObjectId id;
     private String name;
     private String surname;
     private String username;
@@ -69,5 +75,13 @@ public class User {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 }

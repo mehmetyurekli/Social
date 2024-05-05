@@ -1,4 +1,4 @@
-package com.mehmetyurekli.Util;
+package com.mehmetyurekli.Mongo;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;

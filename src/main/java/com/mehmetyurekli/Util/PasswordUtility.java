@@ -8,7 +8,6 @@ public class PasswordUtility {
 
     private static final Argon2 argon = Argon2Factory.create();
 
-
     public static String hashPassword(char[] password) {
         return argon.hash(10, 65536, 1, password);
     }

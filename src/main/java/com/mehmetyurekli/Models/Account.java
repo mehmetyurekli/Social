@@ -1,6 +1,6 @@
 package com.mehmetyurekli.Models;
 
-import com.mehmetyurekli.Util.MongoConnector;
+import com.mehmetyurekli.Mongo.MongoConnector;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
