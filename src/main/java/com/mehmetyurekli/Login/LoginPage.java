@@ -3,6 +3,7 @@ package com.mehmetyurekli.Login;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
+import com.mehmetyurekli.SocialApp;
 import com.mehmetyurekli.Util.PasswordUtility;
 import net.miginfocom.swing.MigLayout;
 
@@ -73,6 +74,8 @@ public class LoginPage extends JPanel {
             else {
                 if (PasswordUtility.verifyPassword(password.getPassword(), user)) {
                     JOptionPane.showMessageDialog(this, "Login successful.");
+                    UserManager.setCurrentUser(user);
+                    LoginManager.getInstance().showPage(new SocialApp());
                 } else {
                     JOptionPane.showMessageDialog(this, "Password is wrong.");
                 }

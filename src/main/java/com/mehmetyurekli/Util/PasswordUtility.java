@@ -13,6 +13,6 @@ public class PasswordUtility {
     }
 
     public static boolean verifyPassword(char[] password, User user) {
-        return argon.verify(user.getAccount().getPassword(), password);
+        return argon.verify(user.getPassword(), password);
     }
 }

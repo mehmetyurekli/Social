@@ -13,7 +13,8 @@ public class User {
     private String surname;
     private String username;
     private String gender;
-    private Account account;
+    private String email;
+    private String password;
     private List<User> friends;
     private boolean visible = true;
 
@@ -53,12 +54,20 @@ public class User {
         this.gender = gender;
     }
 
-    public Account getAccount() {
-        return account;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<User> getFriends() {

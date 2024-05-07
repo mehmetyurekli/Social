@@ -4,17 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="login system done.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" afterDir="false" />
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="generic repository pattern implemented">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ContentListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/FriendPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/FriendsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/UserManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SettingsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/TestPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SearchBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SocialButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/settings.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/user.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Builders/UserBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Builders/UserBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/RegisterPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/RegisterPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/Account.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Services/DatabaseService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Services/MyDbService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/MongoConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/PasswordUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/PasswordUtility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +41,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -62,12 +77,18 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/mehmetyurekli" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mehmetyurekli" />
     </key>
@@ -107,7 +128,13 @@
       <workItem from="1714747334982" duration="4895000" />
       <workItem from="1714756551635" duration="8006000" />
       <workItem from="1714897034409" duration="205000" />
-      <workItem from="1714925547772" duration="5503000" />
+      <workItem from="1714925547772" duration="5619000" />
+      <workItem from="1714941712076" duration="6675000" />
+      <workItem from="1714996965942" duration="6557000" />
+      <workItem from="1715008388660" duration="12733000" />
+      <workItem from="1715089432538" duration="473000" />
+      <workItem from="1715090245820" duration="565000" />
+      <workItem from="1715101827251" duration="7565000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -117,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714756860703</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="generic repository pattern implemented">
+      <option name="closed" value="true" />
+      <created>1714932094567</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714932094567</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +172,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="login system done." />
-    <option name="LAST_COMMIT_MESSAGE" value="login system done." />
+    <MESSAGE value="generic repository pattern implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="generic repository pattern implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

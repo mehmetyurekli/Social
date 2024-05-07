@@ -3,6 +3,8 @@ package com.mehmetyurekli.Mongo;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Updates;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ public class MongoRepository<T> implements Repository<T> {
         this.collection = this.database.getCollection(collection, tClass);
     }
     @Override
-    public T getSingle(String field, String value) {
+    public T getSingle(String field, Object value) {
         return collection.find(eq(field, value)).first();
     }
 
@@ -38,8 +40,8 @@ public class MongoRepository<T> implements Repository<T> {
     }
 
     @Override
-    public void replace(String fieldToFind, String valueToFind, String field, String value) {
-        collection.updateOne(eq(fieldToFind, valueToFind), eq(field, value));
+    public void replace(String fieldToFind, Object valueToFind, String field, Object value) {
+        collection.updateOne(eq(fieldToFind, valueToFind), Updates.set(field, value));
     }
 
     @Override

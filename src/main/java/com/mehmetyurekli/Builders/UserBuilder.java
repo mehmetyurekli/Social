@@ -1,15 +1,12 @@
 package com.mehmetyurekli.Builders;
 
-import com.mehmetyurekli.Models.Account;
 import com.mehmetyurekli.Models.User;
 
 public class UserBuilder {
-    User user;
-    Account account;
+    private User user;
 
     public UserBuilder(){
         user = new User();
-        account = new Account();
     }
     public UserBuilder withName(String name){
         user.setName(name);
@@ -28,16 +25,15 @@ public class UserBuilder {
         return this;
     }
     public UserBuilder withEmail(String email){
-        account.setEmail(email);
+        user.setEmail(email);
         return this;
     }
     public UserBuilder withPassword(String password){
-        account.setPassword(password);
+        user.setPassword(password);
         return this;
     }
 
     public User build(){
-        user.setAccount(account);
         return user;
     }
 
