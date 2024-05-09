@@ -4,33 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="generic repository pattern implemented">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ContentListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/FriendPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/FriendsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/UserManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SettingsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/TestPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/Button.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SearchBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SocialButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/user.png" afterDir="false" />
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="repository fixed. main page and settings page added. friendspanel added.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/SearchEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/QueryPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/UserPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Builders/UserBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Builders/UserBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/FriendPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FriendPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/FriendsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FriendsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/RegisterPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/RegisterPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/PasswordUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/PasswordUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SearchBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SearchBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +28,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -61,30 +49,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Social.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Social.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/mehmetyurekli" />
@@ -134,7 +122,12 @@
       <workItem from="1715008388660" duration="12733000" />
       <workItem from="1715089432538" duration="473000" />
       <workItem from="1715090245820" duration="565000" />
-      <workItem from="1715101827251" duration="7565000" />
+      <workItem from="1715101827251" duration="7981000" />
+      <workItem from="1715162148420" duration="89000" />
+      <workItem from="1715184944523" duration="6190000" />
+      <workItem from="1715191806860" duration="6400000" />
+      <workItem from="1715251595922" duration="764000" />
+      <workItem from="1715272229100" duration="4896000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -152,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714932094567</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="repository fixed. main page and settings page added. friendspanel added.">
+      <option name="closed" value="true" />
+      <created>1715110061084</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715110061084</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +174,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="login system done." />
     <MESSAGE value="generic repository pattern implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="generic repository pattern implemented" />
+    <MESSAGE value="repository fixed. main page and settings page added. friendspanel added." />
+    <option name="LAST_COMMIT_MESSAGE" value="repository fixed. main page and settings page added. friendspanel added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

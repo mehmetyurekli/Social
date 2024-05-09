@@ -4,7 +4,6 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Updates;
-import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +15,18 @@ public class MongoRepository<T> implements Repository<T> {
     private MongoClient mongoClient;
     private MongoDatabase database;
     private MongoCollection<T> collection;
+    private String databaseName;
+    private String collectionName;
+    private Class<T> classType;
+
 
     public MongoRepository(String database, String collection, Class<T> tClass){
         this.mongoClient = MongoConnector.getInstance().getMongo();
         this.database = mongoClient.getDatabase(database);
         this.collection = this.database.getCollection(collection, tClass);
+        this.databaseName = database;
+        this.collectionName = collection;
+        this.classType = tClass;
     }
     @Override
     public T getSingle(String field, Object value) {

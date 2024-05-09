@@ -1,4 +1,4 @@
-package com.mehmetyurekli;
+package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
@@ -17,7 +17,7 @@ public class FriendPanel extends JPanel {
     }
 
     private void init(){
-        JPanel panel = new JPanel(new MigLayout("fill, insets 0 0 0 0", "[225, left]", "[40, center]"));
+        JPanel panel = new JPanel(new MigLayout("fill, insets 0 0 0 0", "[200, left]", "[40, center]"));
         panel.setBackground(new Color(69, 69, 69));
         panel.putClientProperty(FlatClientProperties.STYLE, "arc: 25");
         JLabel label = new JLabel("  " + user.getUsername());

@@ -90,7 +90,6 @@ public class RegisterPage extends JPanel {
         registerBtn.addActionListener(e -> {
 
             if (isPasswordSame()) {
-
                 if (name.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "You must enter a name!");
                 }

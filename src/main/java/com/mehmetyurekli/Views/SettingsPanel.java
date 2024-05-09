@@ -1,6 +1,7 @@
-package com.mehmetyurekli;
+package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
@@ -49,7 +50,7 @@ public class SettingsPanel extends JPanel {
         cancelBtn.setMaximumSize(new Dimension(400, 40));
         cancelBtn.setBackground(new Color(161, 9, 9));
 
-        JPanel panel = new JPanel(new MigLayout("fill, wrap", "[400][400]", "[500]"));
+        JPanel panel = new JPanel(new MigLayout("fill, wrap", "[450][450]", "[500]"));
         panel.setBackground(new Color(69, 69, 69));
         panel.putClientProperty(FlatClientProperties.STYLE, "arc: 15");
 

@@ -1,16 +1,12 @@
 package com.mehmetyurekli;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-import com.mehmetyurekli.Builders.UserBuilder;
 import com.mehmetyurekli.Login.LoginPage;
-import com.mehmetyurekli.Models.User;
 
 import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
-
-
 
         UIManager.setLookAndFeel(new FlatMacDarkLaf());
         UIManager.put("TextComponent.arc", 15);

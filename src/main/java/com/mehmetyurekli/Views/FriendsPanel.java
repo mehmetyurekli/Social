@@ -1,4 +1,4 @@
-package com.mehmetyurekli;
+package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Builders.UserBuilder;
@@ -16,8 +16,8 @@ public class FriendsPanel extends JPanel {
     }
 
     private void init(){
-        setLayout(new MigLayout("wrap", "[CENTER]", "[][]"));
-        JPanel panel = new JPanel(new MigLayout("wrap, insets 0 0 0 0", "[left]", "[center]"));
+        setLayout(new MigLayout("wrap", "[center]", "[][]"));
+        JPanel panel = new JPanel(new MigLayout("wrap, insets 5 0 5 0", "[left]", "[center]"));
         this.setBackground(new Color(69, 69, 69));
         this.putClientProperty(FlatClientProperties.STYLE, "arc: 15");
 

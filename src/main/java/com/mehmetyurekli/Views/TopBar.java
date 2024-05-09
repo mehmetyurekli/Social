@@ -1,7 +1,7 @@
 package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.mehmetyurekli.ContentListener;
+import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.Icons;
 import net.miginfocom.swing.MigLayout;
@@ -51,7 +51,7 @@ public class TopBar extends JPanel {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(() -> {
-                        //TODO
+                        listener.onContentChange(ContentChange.QUERY_ENTER);
                     });
                 }
             }
@@ -70,4 +70,9 @@ public class TopBar extends JPanel {
     public void setListener(ContentListener listener) {
         this.listener = listener;
     }
+
+    public SearchBar getSearchBar() {
+        return searchBar;
+    }
+
 }

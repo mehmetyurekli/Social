@@ -1,6 +1,4 @@
-package com.mehmetyurekli;
-
-import com.mehmetyurekli.Util.ContentChange;
+package com.mehmetyurekli.Util;
 
 public interface ContentListener {
 

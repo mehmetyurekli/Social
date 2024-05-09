@@ -6,5 +6,6 @@ public enum ContentChange {
     CREATE_POST_ENTER,
     CREATE_POST_EXIT,
     PROFILE_ENTER,
-    PROFILE_EXIT;
+    PROFILE_EXIT,
+    QUERY_ENTER;
 }

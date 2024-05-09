@@ -14,6 +14,8 @@ public class SearchBar extends JTextField {
     }
 
     private void init(){
+        setPreferredSize(new Dimension(300, 40));
+        this.putClientProperty(FlatClientProperties.STYLE, "arc: 40");
         setText(" Search");
         setFont(new Font("Public Sans", Font.ITALIC, 30));
         setForeground(Color.GRAY);
@@ -35,7 +37,6 @@ public class SearchBar extends JTextField {
 
             }
         });
-        setPreferredSize(new Dimension(300, 40));
-        this.putClientProperty(FlatClientProperties.STYLE, "arc: 40");
     }
+
 }
