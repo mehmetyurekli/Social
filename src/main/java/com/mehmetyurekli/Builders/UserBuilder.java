@@ -2,6 +2,8 @@ package com.mehmetyurekli.Builders;
 
 import com.mehmetyurekli.Models.User;
 
+import java.util.ArrayList;
+
 public class UserBuilder {
     private User user;
 

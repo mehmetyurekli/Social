@@ -2,16 +2,24 @@ package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
+import com.mehmetyurekli.Util.ContentChange;
+import com.mehmetyurekli.Util.ContentListener;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class QueryPanel extends JPanel {
 
     private User[] users;
     private JScrollPane scrollPane;
     private boolean init;
+    private ContentListener listener;
+    private User clicked;
 
     public QueryPanel(User[] users){
         if(users != null){
@@ -39,7 +47,15 @@ public class QueryPanel extends JPanel {
         }
         else{
             for(User u : users){
-                panel.add(new UserPanel(u));
+                UserPanel userPanel = new UserPanel(u);
+                userPanel.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        clicked = u;
+                        listener.onContentChange(ContentChange.PROFILE_ENTER);
+                    }
+                });
+                panel.add(userPanel);
             }
         }
         JScrollPane scrollPane = new JScrollPane(panel);
@@ -52,4 +68,12 @@ public class QueryPanel extends JPanel {
         this.add(scrollPane);
     }
 
+
+    public User getClicked() {
+        return clicked;
+    }
+
+    public void setListener(ContentListener listener) {
+        this.listener = listener;
+    }
 }

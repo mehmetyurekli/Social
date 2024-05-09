@@ -20,7 +20,9 @@ public class SocialApp extends JPanel implements ContentListener {
     private SettingsPanel settingsPanel;
     private QueryPanel queryPanel;
     private FriendsPanel friendsPanel;
+    private ProfilePanel profilePanel;
     private String lastIndex;
+
     public SocialApp(){
         init();
     }
@@ -36,10 +38,15 @@ public class SocialApp extends JPanel implements ContentListener {
         settingsPanel.setListener(this);
 
         queryPanel = new QueryPanel();
+        queryPanel.setListener(this);
+
+        profilePanel = new ProfilePanel();
+
         friendsPanel = new FriendsPanel();
 
         contentPanel.add(settingsPanel, "0");
         contentPanel.add(queryPanel, "1");
+        contentPanel.add(profilePanel, "2");
 
 
         bar = new TopBar();
@@ -66,7 +73,7 @@ public class SocialApp extends JPanel implements ContentListener {
 
             case ContentChange.SETTINGS_EXIT:
                 SwingUtilities.invokeLater(() -> {
-                   ((CardLayout) contentPanel.getLayout()).show(contentPanel, lastIndex);
+                    ((CardLayout) contentPanel.getLayout()).show(contentPanel, lastIndex);
                 });
                 break;
 
@@ -75,10 +82,22 @@ public class SocialApp extends JPanel implements ContentListener {
                     lastIndex = "1";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
                     queryPanel = new QueryPanel(SearchEngine.searchUsers(bar.getSearchBar().getText()));
+                    queryPanel.setListener(this);
                     contentPanel.remove(1);
                     contentPanel.add(queryPanel, "1");
                     cardLayout.show(contentPanel, "1");
 
+                });
+                break;
+
+            case ContentChange.PROFILE_ENTER:
+                SwingUtilities.invokeLater(() -> {
+                    lastIndex = "2";
+                    CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+                    profilePanel = new ProfilePanel(queryPanel.getClicked());
+                    contentPanel.remove(2);
+                    contentPanel.add(profilePanel, "2");
+                    cardLayout.show(contentPanel, "2");
                 });
                 break;
 

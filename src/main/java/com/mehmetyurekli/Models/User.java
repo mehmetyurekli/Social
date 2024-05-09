@@ -3,6 +3,8 @@ package com.mehmetyurekli.Models;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -15,11 +17,17 @@ public class User {
     private String gender;
     private String email;
     private String password;
-    private List<User> friends;
+    private ArrayList<User> friends = new ArrayList<>();
+    private ArrayList<User> invites = new ArrayList<>();
+    private String about;
     private boolean visible = true;
 
     public User() {
 
+    }
+
+    public boolean isFriend(User user){
+        return friends.contains(user);
     }
 
     public String getName() {
@@ -70,11 +78,11 @@ public class User {
         this.password = password;
     }
 
-    public List<User> getFriends() {
+    public ArrayList<User> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<User> friends) {
+    public void setFriends(ArrayList<User> friends) {
         this.friends = friends;
     }
 
@@ -93,4 +101,18 @@ public class User {
     public void setId(ObjectId id) {
         this.id = id;
     }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public ArrayList<User> getInvites() {
+        return invites;
+    }
+
+
 }
