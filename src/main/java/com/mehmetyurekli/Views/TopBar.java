@@ -61,6 +61,10 @@ public class TopBar extends JPanel {
             listener.onContentChange(ContentChange.SETTINGS_ENTER);
         });
 
+        profileBtn.addActionListener(e -> {
+            listener.onContentChange(ContentChange.PROFILE_ENTER);
+        });
+
 
 
 

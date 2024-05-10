@@ -50,7 +50,7 @@ public class QueryPanel extends JPanel {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         clickedUsername = u.getUsername();
-                        listener.onContentChange(ContentChange.PROFILE_ENTER);
+                        listener.onContentChange(ContentChange.OTHER_PROFILE_ENTER);
                     }
                 });
                 panel.add(userPanel);

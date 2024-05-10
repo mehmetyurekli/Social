@@ -6,7 +6,8 @@ public enum Icons {
     FRIENDS("src/main/java/com/mehmetyurekli/icons/friends.png"),
     ADD("src/main/java/com/mehmetyurekli/icons/plus.png"),
     SETTINGS("src/main/java/com/mehmetyurekli/icons/settings.png"),
-    PROFILE("src/main/java/com/mehmetyurekli/icons/user.png");
+    PROFILE("src/main/java/com/mehmetyurekli/icons/user.png"),
+    NOTIFICATION("src/main/java/com/mehmetyurekli/icons/notification.png");
 
     private String path;
 

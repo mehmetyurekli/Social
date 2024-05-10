@@ -5,7 +5,8 @@ public enum ContentChange {
     SETTINGS_ENTER,
     CREATE_POST_ENTER,
     CREATE_POST_EXIT,
+    OTHER_PROFILE_ENTER,
     PROFILE_ENTER,
-    PROFILE_EXIT,
-    QUERY_ENTER;
+    QUERY_ENTER,
+    APP_OPEN;
 }

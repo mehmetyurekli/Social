@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="if a result of a query is clicked, it opens up the profile. friend invitation implemented.">
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="invites are now held in an arraylist of object id's. (in case of change of username)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationMonitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/notification.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ProfilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ProfilePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/QueryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/QueryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +35,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="autoscrollToSource" value="true" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -44,7 +54,8 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
-    "Application.Social.executor": "Debug",
+    "Application.Social.executor": "Run",
+    "Application.Social2.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -66,13 +77,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons" />
       <recent name="$PROJECT_DIR$/src/main/java/com/mehmetyurekli" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mehmetyurekli" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Social2">
     <configuration name="Social" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.mehmetyurekli.Main" />
       <module name="Social" />
@@ -80,6 +92,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Social2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.mehmetyurekli.Main" />
+      <module name="Social" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Social" />
+      <item itemvalue="Application.Social2" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -120,7 +143,9 @@
       <workItem from="1715251595922" duration="764000" />
       <workItem from="1715272229100" duration="10572000" />
       <workItem from="1715336781708" duration="163000" />
-      <workItem from="1715348810702" duration="1022000" />
+      <workItem from="1715348810702" duration="6842000" />
+      <workItem from="1715359022256" duration="375000" />
+      <workItem from="1715359664664" duration="6980000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -162,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715283258280</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="invites are now held in an arraylist of object id's. (in case of change of username)">
+      <option name="closed" value="true" />
+      <created>1715350100073</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715350100073</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +219,8 @@
     <MESSAGE value="repository fixed. main page and settings page added. friendspanel added." />
     <MESSAGE value="query panel and search engine implemented. SocialApp is now using cardlayout as a content panel." />
     <MESSAGE value="if a result of a query is clicked, it opens up the profile. friend invitation implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="if a result of a query is clicked, it opens up the profile. friend invitation implemented." />
+    <MESSAGE value="invites are now held in an arraylist of object id's. (in case of change of username)" />
+    <option name="LAST_COMMIT_MESSAGE" value="invites are now held in an arraylist of object id's. (in case of change of username)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

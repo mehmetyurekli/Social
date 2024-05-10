@@ -1,5 +1,6 @@
 package com.mehmetyurekli;
 
+import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.ContentChange;
@@ -33,6 +34,7 @@ public class SocialApp extends JPanel implements ContentListener {
     private void init(){
         users = new MongoRepository<>("Social", "Users", User.class);
 
+
         lastIndex = "0";
 
         contentPanel = new JPanel(new CardLayout());
@@ -61,6 +63,9 @@ public class SocialApp extends JPanel implements ContentListener {
         mainPanel.add(contentPanel, "cell 0 1, grow");
         mainPanel.add(friendsPanel, "cell 1 1, grow");
         this.add(mainPanel);
+        if(!UserManager.getCurrentUser().getInvites().isEmpty()){
+            JOptionPane.showMessageDialog(this, "You have " + UserManager.getCurrentUser().getInvites().size() + " invites.");
+        }
 
     }
 
@@ -94,7 +99,18 @@ public class SocialApp extends JPanel implements ContentListener {
                 });
                 break;
 
-            case ContentChange.PROFILE_ENTER:
+            case PROFILE_ENTER:
+                SwingUtilities.invokeLater(() -> {
+                    lastIndex = "2";
+                    CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+                    profilePanel = new ProfilePanel(UserManager.getCurrentUser());
+                    contentPanel.remove(2);
+                    contentPanel.add(profilePanel, "2");
+                    cardLayout.show(contentPanel, "2");
+                });
+                break;
+
+            case ContentChange.OTHER_PROFILE_ENTER:
                 SwingUtilities.invokeLater(() -> {
                     lastIndex = "2";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();

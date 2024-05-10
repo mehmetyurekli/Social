@@ -9,7 +9,12 @@ import org.bson.types.ObjectId;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ProfilePanel extends JPanel {
 
@@ -42,15 +47,19 @@ public class ProfilePanel extends JPanel {
         JTextArea description = new JTextArea(user.getAbout());
         description.setLineWrap(true);
         description.setPreferredSize(new Dimension(900, 100));
+        description.setBackground(new Color(69, 69, 69));
         description.setEditable(false);
         description.getCaret().deinstall(description);
-        description.setBackground(new Color(69, 69, 69));
 
         JButton addFriend;
+        JButton save = new JButton("Save Changes");
         if(UserManager.getCurrentUser().getUsername().equals(user.getUsername())){
             addFriend = null;
+            description.setEditable(true);
+            description.getCaret().install(description);
             panel.add(name, "span 2, wrap, align left");
             panel.add(username, "align left, gapbottom 5, wrap");
+
         }
         else{
             if(UserManager.getCurrentUser().isFriend(user.getId())){
@@ -75,16 +84,22 @@ public class ProfilePanel extends JPanel {
         panel.add(new JLabel("About"), "wrap");
         panel.add(description, "grow, span 2, wrap");
 
+        if(UserManager.getCurrentUser().getUsername().equals(user.getUsername())){
+            panel.add(save, "span 2, align center");
+        }
+
         this.add(panel);
 
+
+        save.addActionListener(e -> {
+            users.replace("username", user.getUsername(), "about", description.getText());
+        });
 
         if(addFriend != null){
             addFriend.addActionListener(a -> {
                 if(addFriend.getText().equals("INVITATION SENDED")){
-                    ArrayList<ObjectId> oldList = user.getInvites();
-                    oldList.remove(UserManager.getCurrentUser().getId());
-                    user.setInvites(oldList);
-                    users.replace("username", user.getUsername(), "invites", oldList);
+                    users.pullFromArray("username", user.getUsername(),
+                            "invites", UserManager.getCurrentUser().getId());
                     SwingUtilities.invokeLater(() -> {
                         addFriend.setText("ADD FRIEND");
                         this.revalidate();
@@ -92,10 +107,8 @@ public class ProfilePanel extends JPanel {
                     });
                 }
                 else{
-                    ArrayList<ObjectId> oldList = user.getInvites();
-                    oldList.add(UserManager.getCurrentUser().getId());
-                    user.setInvites(oldList);
-                    users.replace("username", user.getUsername(), "invites", oldList);
+                    users.pushToArray("username", user.getUsername(),
+                            "invites", UserManager.getCurrentUser().getId());
                     SwingUtilities.invokeLater(() -> {
                         addFriend.setText("INVITATION SENDED");
                         this.revalidate();
