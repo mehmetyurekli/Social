@@ -1,6 +1,8 @@
 package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.mehmetyurekli.Login.LoginManager;
+import com.mehmetyurekli.Login.LoginPage;
 import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
@@ -82,6 +84,12 @@ public class SettingsPanel extends JPanel {
         panel.add(cancelBtn, "grow");
         panel.add(saveBtn, "grow");
 
+
+        JButton logOut = new JButton("<html><u><a style=\"color:#FFFFFF;\">You can log out here.</a></u></html>");
+        logOut.setContentAreaFilled(false);
+        logOut.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        panel.add(logOut, "gapbottom 0, gaptop 0, align center, span 2");
+
         saveBtn.addActionListener(e ->{
             if(newUsername.getText().isEmpty() && visibility.isSelected()==user.isVisible() &&
                     oldPassword.getPassword().length == 0 && newPassword.getPassword().length == 0 &&
@@ -158,6 +166,16 @@ public class SettingsPanel extends JPanel {
         cancelBtn.addActionListener(e -> {
             listener.onContentChange(ContentChange.SETTINGS_EXIT);
         });
+
+
+
+        logOut.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, "Logged out successfully.");
+            UserManager.setCurrentUser(null);
+            LoginManager.getInstance().showPage(new LoginPage());
+        });
+
+
 
         this.add(panel);
 

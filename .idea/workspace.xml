@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="invites are now held in an arraylist of object id's. (in case of change of username)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationMonitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/notification.png" afterDir="false" />
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="temporary invitation monitor implemented using a new thread. users can now edit their own &quot;about&quot; field.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ProfilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ProfilePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/QueryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/QueryPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SettingsPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +135,7 @@
       <workItem from="1715336781708" duration="163000" />
       <workItem from="1715348810702" duration="6842000" />
       <workItem from="1715359022256" duration="375000" />
-      <workItem from="1715359664664" duration="6980000" />
+      <workItem from="1715359664664" duration="7568000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -195,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715350100073</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="temporary invitation monitor implemented using a new thread. users can now edit their own &quot;about&quot; field.">
+      <option name="closed" value="true" />
+      <created>1715367061513</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715367061513</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +218,8 @@
     <MESSAGE value="query panel and search engine implemented. SocialApp is now using cardlayout as a content panel." />
     <MESSAGE value="if a result of a query is clicked, it opens up the profile. friend invitation implemented." />
     <MESSAGE value="invites are now held in an arraylist of object id's. (in case of change of username)" />
-    <option name="LAST_COMMIT_MESSAGE" value="invites are now held in an arraylist of object id's. (in case of change of username)" />
+    <MESSAGE value="temporary invitation monitor implemented using a new thread. users can now edit their own &quot;about&quot; field." />
+    <option name="LAST_COMMIT_MESSAGE" value="temporary invitation monitor implemented using a new thread. users can now edit their own &quot;about&quot; field." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
