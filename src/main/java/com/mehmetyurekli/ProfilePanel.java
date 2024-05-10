@@ -4,8 +4,8 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
-import com.mehmetyurekli.Util.ContentListener;
 import net.miginfocom.swing.MigLayout;
+import org.bson.types.ObjectId;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,11 +53,11 @@ public class ProfilePanel extends JPanel {
             panel.add(username, "align left, gapbottom 5, wrap");
         }
         else{
-            if(UserManager.getCurrentUser().isFriend(user)){
+            if(UserManager.getCurrentUser().isFriend(user.getId())){
                 addFriend = new JButton("REMOVE FRIEND");
             }
             else{
-                if(user.getInvites().contains(UserManager.getCurrentUser())){
+                if(user.getInvites().contains(UserManager.getCurrentUser().getId())){
                     addFriend = new JButton("INVITATION SENDED");
                 }
                 else{
@@ -81,8 +81,9 @@ public class ProfilePanel extends JPanel {
         if(addFriend != null){
             addFriend.addActionListener(a -> {
                 if(addFriend.getText().equals("INVITATION SENDED")){
-                    ArrayList<User> oldList = user.getInvites();
-                    oldList.remove(UserManager.getCurrentUser());
+                    ArrayList<ObjectId> oldList = user.getInvites();
+                    oldList.remove(UserManager.getCurrentUser().getId());
+                    user.setInvites(oldList);
                     users.replace("username", user.getUsername(), "invites", oldList);
                     SwingUtilities.invokeLater(() -> {
                         addFriend.setText("ADD FRIEND");
@@ -91,8 +92,9 @@ public class ProfilePanel extends JPanel {
                     });
                 }
                 else{
-                    ArrayList<User> oldList = user.getInvites();
-                    oldList.add(UserManager.getCurrentUser());
+                    ArrayList<ObjectId> oldList = user.getInvites();
+                    oldList.add(UserManager.getCurrentUser().getId());
+                    user.setInvites(oldList);
                     users.replace("username", user.getUsername(), "invites", oldList);
                     SwingUtilities.invokeLater(() -> {
                         addFriend.setText("INVITATION SENDED");

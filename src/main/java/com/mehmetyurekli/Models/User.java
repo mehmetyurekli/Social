@@ -17,8 +17,8 @@ public class User {
     private String gender;
     private String email;
     private String password;
-    private ArrayList<User> friends = new ArrayList<>();
-    private ArrayList<User> invites = new ArrayList<>();
+    private ArrayList<ObjectId> friends = new ArrayList<>();
+    private ArrayList<ObjectId> invites = new ArrayList<>();
     private String about;
     private boolean visible = true;
 
@@ -26,8 +26,8 @@ public class User {
 
     }
 
-    public boolean isFriend(User user){
-        return friends.contains(user);
+    public boolean isFriend(ObjectId id){
+        return friends.contains(id);
     }
 
     public String getName() {
@@ -78,11 +78,11 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<User> getFriends() {
+    public ArrayList<ObjectId> getFriends() {
         return friends;
     }
 
-    public void setFriends(ArrayList<User> friends) {
+    public void setFriends(ArrayList<ObjectId> friends) {
         this.friends = friends;
     }
 
@@ -110,9 +110,11 @@ public class User {
         this.about = about;
     }
 
-    public ArrayList<User> getInvites() {
+    public ArrayList<ObjectId> getInvites() {
         return invites;
     }
 
-
+    public void setInvites(ArrayList<ObjectId> invites) {
+        this.invites = invites;
+    }
 }

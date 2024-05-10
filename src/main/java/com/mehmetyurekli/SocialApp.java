@@ -1,5 +1,7 @@
 package com.mehmetyurekli;
 
+import com.mehmetyurekli.Models.User;
+import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Util.SearchEngine;
@@ -22,12 +24,14 @@ public class SocialApp extends JPanel implements ContentListener {
     private FriendsPanel friendsPanel;
     private ProfilePanel profilePanel;
     private String lastIndex;
+    private MongoRepository<User> users;
 
     public SocialApp(){
         init();
     }
 
     private void init(){
+        users = new MongoRepository<>("Social", "Users", User.class);
 
         lastIndex = "0";
 
@@ -94,7 +98,7 @@ public class SocialApp extends JPanel implements ContentListener {
                 SwingUtilities.invokeLater(() -> {
                     lastIndex = "2";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
-                    profilePanel = new ProfilePanel(queryPanel.getClicked());
+                    profilePanel = new ProfilePanel(users.getSingle("username", queryPanel.getClickedUsername()));
                     contentPanel.remove(2);
                     contentPanel.add(profilePanel, "2");
                     cardLayout.show(contentPanel, "2");

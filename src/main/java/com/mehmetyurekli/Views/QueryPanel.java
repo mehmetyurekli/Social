@@ -8,8 +8,6 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -19,7 +17,7 @@ public class QueryPanel extends JPanel {
     private JScrollPane scrollPane;
     private boolean init;
     private ContentListener listener;
-    private User clicked;
+    private String clickedUsername;
 
     public QueryPanel(User[] users){
         if(users != null){
@@ -51,7 +49,7 @@ public class QueryPanel extends JPanel {
                 userPanel.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        clicked = u;
+                        clickedUsername = u.getUsername();
                         listener.onContentChange(ContentChange.PROFILE_ENTER);
                     }
                 });
@@ -69,8 +67,8 @@ public class QueryPanel extends JPanel {
     }
 
 
-    public User getClicked() {
-        return clicked;
+    public String getClickedUsername() {
+        return clickedUsername;
     }
 
     public void setListener(ContentListener listener) {
