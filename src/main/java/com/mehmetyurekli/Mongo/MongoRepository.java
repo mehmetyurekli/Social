@@ -69,13 +69,4 @@ public class MongoRepository<T> implements Repository<T> {
         collection.deleteOne(eq(fieldToFind, value));
     }
 
-    @Override
-    public MongoDatabase getDatabase() {
-        return this.database;
-    }
-
-    @Override
-    public MongoCollection<T> getCollection() {
-        return this.collection;
-    }
 }

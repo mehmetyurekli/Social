@@ -17,7 +17,7 @@ public class TopBar extends JPanel {
     private SocialButton socialBtn;
     private Button settingsBtn;
     private Button profileBtn;
-    private Button addBtn;
+    private Button notificationsBtn;
     private SearchBar searchBar;
 
     public TopBar(){
@@ -28,7 +28,7 @@ public class TopBar extends JPanel {
         socialBtn = new SocialButton();
         settingsBtn = new Button(Icons.SETTINGS);
         profileBtn = new Button(Icons.PROFILE);
-        addBtn = new Button(Icons.ADD);
+        notificationsBtn = new Button(Icons.NOTIFICATION);
         searchBar = new SearchBar();
 
 
@@ -39,7 +39,7 @@ public class TopBar extends JPanel {
         panel.add(searchBar, "span 11, align center, gapx 15");
         panel.add(settingsBtn, "gapx 15");
         panel.add(profileBtn, "gapx 15");
-        panel.add(addBtn, "gapx 15");
+        panel.add(notificationsBtn, "gapx 15");
         this.add(panel);
 
         socialBtn.addActionListener(e -> {
@@ -63,6 +63,10 @@ public class TopBar extends JPanel {
 
         profileBtn.addActionListener(e -> {
             listener.onContentChange(ContentChange.PROFILE_ENTER);
+        });
+
+        notificationsBtn.addActionListener(e -> {
+            listener.onContentChange(ContentChange.NOTIFICATIONS_ENTER);
         });
 
 

@@ -1,5 +1,6 @@
 package com.mehmetyurekli.Util;
 
+import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 
@@ -11,13 +12,16 @@ public class SearchEngine {
         if(query == null){
             return null;
         }
-        List<User> users = new MongoRepository<User>("Social", "Users", User.class).getAll();
+        MongoRepository<User> repository = new MongoRepository<User>("Social", "Users", User.class);
+        List<User> users = repository.getAll();
         query = query.toLowerCase();
 
         HashMap<User, Double> similarityMap = new HashMap<>();
         for(User u : users){ //search by name
             if(!u.isVisible()){
-                continue;
+                if(!UserManager.getCurrentUser().isFriend(u.getId())){
+                    continue;
+                }
             }
             double nameSimilarity = findJaroDistance(query, u.getName().toLowerCase());
             double surnameSimilarity = findJaroDistance(query, u.getSurname().toLowerCase());

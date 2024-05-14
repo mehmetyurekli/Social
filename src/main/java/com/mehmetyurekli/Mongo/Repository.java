@@ -14,7 +14,4 @@ public interface Repository<T> {
     public void pushToArray(String fieldToFind, Object valueToFind, String fieldToPush,Object push);
     public void pullFromArray(String fieldToFind, Object valueToFind, String fieldToPull,Object pull);
     public void delete(String fieldToFind, Object value);
-    public MongoDatabase getDatabase();
-    public MongoCollection<T> getCollection();
-
 }

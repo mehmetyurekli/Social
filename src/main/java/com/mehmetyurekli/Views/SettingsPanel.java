@@ -81,8 +81,8 @@ public class SettingsPanel extends JPanel {
         panel.add(newPassword, "grow");
         panel.add(confirmNewPassword, "wrap, grow");
 
-        panel.add(cancelBtn, "grow");
-        panel.add(saveBtn, "grow");
+        panel.add(cancelBtn, "align center, grow");
+        panel.add(saveBtn, "align center, grow");
 
 
         JButton logOut = new JButton("<html><u><a style=\"color:#FFFFFF;\">You can log out here.</a></u></html>");
@@ -101,12 +101,11 @@ public class SettingsPanel extends JPanel {
             }
 
             else{
-                if(PasswordUtility.verifyPassword(oldPassword.getPassword(), user)){
+                if(PasswordUtility.verifyPassword(oldPassword.getPassword(), user.getPassword())){
                     if(!newUsername.getText().isEmpty()){
                         if(users.getSingle("username", newUsername.getText()) == null){
                             users.replace("username", user.getUsername(), "username", newUsername.getText());
                             JOptionPane.showMessageDialog(this, "Username changed successfully.");
-                            UserManager.setCurrentUser(users.getSingle("username", newUsername.getText()));
                             user = UserManager.getCurrentUser();
                             newUsername.setText("");
                             oldPassword.setText("");
@@ -128,7 +127,6 @@ public class SettingsPanel extends JPanel {
                             else{
                                 users.replace("username", user.getUsername(), "password",
                                         PasswordUtility.hashPassword(newPassword.getPassword()));
-                                UserManager.setCurrentUser(users.getSingle("username", user.getUsername()));
                                 JOptionPane.showMessageDialog(this, "Password changed successfully.");
                                 user = UserManager.getCurrentUser();
                                 newUsername.setText("");
@@ -143,7 +141,6 @@ public class SettingsPanel extends JPanel {
                                 visibility.isSelected());
                         JOptionPane.showMessageDialog(this,
                                 "Visibility is set to " + (user.isVisible() ? "'Not visible'" : "'Visible'"));
-                        UserManager.setCurrentUser(users.getSingle("username", user.getUsername()));
                         user = UserManager.getCurrentUser();
                         newUsername.setText("");
                         oldPassword.setText("");

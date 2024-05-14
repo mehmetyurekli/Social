@@ -15,6 +15,7 @@ public class MongoConnector {
     private static MongoConnector instance;
     private MongoClient client;
     private String uri = "mongodb://localhost:27017";
+    //private String uri = "mongodb+srv://mehmetyurekli:10012003@cluster0.kk2hlzc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
     private MongoConnector() {
         CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());

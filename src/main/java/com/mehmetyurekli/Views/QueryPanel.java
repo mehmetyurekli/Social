@@ -5,6 +5,7 @@ import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.ContentListener;
 import net.miginfocom.swing.MigLayout;
+import org.bson.types.ObjectId;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class QueryPanel extends JPanel {
     private JScrollPane scrollPane;
     private boolean init;
     private ContentListener listener;
-    private String clickedUsername;
+    private ObjectId clickedUser;
 
     public QueryPanel(User[] users){
         if(users != null){
@@ -49,10 +50,11 @@ public class QueryPanel extends JPanel {
                 userPanel.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        clickedUsername = u.getUsername();
-                        listener.onContentChange(ContentChange.OTHER_PROFILE_ENTER);
+                        clickedUser = u.getId();
+                        listener.onContentChange(ContentChange.OTHER_PROFILE_ENTER_QUERY);
                     }
                 });
+                userPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 panel.add(userPanel);
             }
         }
@@ -67,8 +69,8 @@ public class QueryPanel extends JPanel {
     }
 
 
-    public String getClickedUsername() {
-        return clickedUsername;
+    public ObjectId getClickedUser() {
+        return clickedUser;
     }
 
     public void setListener(ContentListener listener) {

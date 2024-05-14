@@ -73,13 +73,16 @@ public class LoginPage extends JPanel {
                 JOptionPane.showMessageDialog(this, "User doesn't exist.");
             }
             else {
-                if (PasswordUtility.verifyPassword(password.getPassword(), user)) {
+                if (PasswordUtility.verifyPassword(password.getPassword(), user.getPassword())) {
                     JOptionPane.showMessageDialog(this, "Login successful.");
-                    UserManager.setCurrentUser(user);
+                    UserManager.setCurrentUser(user.getId());
                     NotificationMonitor monitor = new NotificationMonitor(user.getId());
                     Thread thread = new Thread(monitor);
                     thread.start();
-                    LoginManager.getInstance().showPage(new SocialApp());
+                    SocialApp app = new SocialApp();
+                    app.setMonitor(monitor);
+                    monitor.setListener(app);
+                    LoginManager.getInstance().showPage(app);
                 } else {
                     JOptionPane.showMessageDialog(this, "Password is wrong.");
                 }

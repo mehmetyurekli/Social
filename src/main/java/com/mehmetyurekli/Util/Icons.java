@@ -1,21 +1,24 @@
 package com.mehmetyurekli.Util;
 
+import javax.swing.*;
+import java.net.URI;
+import java.net.URL;
+
 public enum Icons {
 
-    HOME("src/main/java/com/mehmetyurekli/icons/home.png"),
-    FRIENDS("src/main/java/com/mehmetyurekli/icons/friends.png"),
-    ADD("src/main/java/com/mehmetyurekli/icons/plus.png"),
-    SETTINGS("src/main/java/com/mehmetyurekli/icons/settings.png"),
-    PROFILE("src/main/java/com/mehmetyurekli/icons/user.png"),
-    NOTIFICATION("src/main/java/com/mehmetyurekli/icons/notification.png");
+    HOME(Icons.class.getResource("/icons/home.png")),
+    ADD(Icons.class.getResource("/icons/plus.png")),
+    SETTINGS(Icons.class.getResource("/icons/settings.png")),
+    PROFILE(Icons.class.getResource("/icons/user.png")),
+    NOTIFICATION(Icons.class.getResource("/icons/notification.png"));
 
-    private String path;
+    private URL path;
 
-    Icons(String path) {
+    Icons(URL path) {
         this.path = path;
     }
 
-    public String getPath() {
+    public URL getPath() {
         return path;
     }
 }

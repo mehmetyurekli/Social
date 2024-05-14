@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Social:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="temporary invitation monitor implemented using a new thread. users can now edit their own &quot;about&quot; field.">
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="log out added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/NotificationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/ScrollPaneTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/notification.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ProfilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/ProfilePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/ContentChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/Icons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/PasswordUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/PasswordUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/SearchEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FriendsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FriendsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/QueryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/QueryPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/TopBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/home.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/notification.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/plus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/settings.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons/user.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +56,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;mehmetyurekli&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mehmetyurekli/Social.git&quot;,
+    &quot;accountId&quot;: &quot;eea0ff62-aadf-43b3-9c2b-431e0851e4b4&quot;
+  }
+}</component>
   <component name="ProblemsViewState">
     <option name="autoscrollToSource" value="true" />
   </component>
@@ -44,12 +87,15 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
-    "Application.Social.executor": "Run",
+    "Application.Social.executor": "Debug",
     "Application.Social2.executor": "Run",
+    "Maven.Social [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.Social [org.apache.maven.plugins:maven-jar-plugin:3.3.0:jar].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "dart.analysis.tool.window.visible": "false",
+    "extract.method.default.visibility": "private",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -57,9 +103,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
@@ -67,6 +113,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/icons" />
       <recent name="$PROJECT_DIR$/src/main/java/com/mehmetyurekli" />
     </key>
@@ -74,7 +122,7 @@
       <recent name="com.mehmetyurekli" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Social2">
+  <component name="RunManager" selected="Application.Social">
     <configuration name="Social" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.mehmetyurekli.Main" />
       <module name="Social" />
@@ -135,7 +183,19 @@
       <workItem from="1715336781708" duration="163000" />
       <workItem from="1715348810702" duration="6842000" />
       <workItem from="1715359022256" duration="375000" />
-      <workItem from="1715359664664" duration="7568000" />
+      <workItem from="1715359664664" duration="8709000" />
+      <workItem from="1715368777865" duration="170000" />
+      <workItem from="1715414007258" duration="184000" />
+      <workItem from="1715424882223" duration="882000" />
+      <workItem from="1715445299258" duration="8820000" />
+      <workItem from="1715588642233" duration="6261000" />
+      <workItem from="1715619199846" duration="675000" />
+      <workItem from="1715679336282" duration="398000" />
+      <workItem from="1715679942904" duration="819000" />
+      <workItem from="1715689136882" duration="235000" />
+      <workItem from="1715690688375" duration="393000" />
+      <workItem from="1715691821433" duration="112000" />
+      <workItem from="1715704369938" duration="4868000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -193,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715367061513</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="log out added">
+      <option name="closed" value="true" />
+      <created>1715367629527</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715367629527</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +287,8 @@
     <MESSAGE value="if a result of a query is clicked, it opens up the profile. friend invitation implemented." />
     <MESSAGE value="invites are now held in an arraylist of object id's. (in case of change of username)" />
     <MESSAGE value="temporary invitation monitor implemented using a new thread. users can now edit their own &quot;about&quot; field." />
-    <option name="LAST_COMMIT_MESSAGE" value="temporary invitation monitor implemented using a new thread. users can now edit their own &quot;about&quot; field." />
+    <MESSAGE value="log out added" />
+    <option name="LAST_COMMIT_MESSAGE" value="log out added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -228,6 +297,21 @@
           <properties class="org.bson.codecs.configuration.CodecConfigurationException" package="org.bson.codecs.configuration" />
           <option name="timeStamp" value="17" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java</url>
+          <line>179</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationMonitor.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mehmetyurekli/NotificationMonitor.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -12,7 +12,7 @@ public class PasswordUtility {
         return argon.hash(10, 65536, 1, password);
     }
 
-    public static boolean verifyPassword(char[] password, User user) {
-        return argon.verify(user.getPassword(), password);
+    public static boolean verifyPassword(char[] password, String hashed) {
+        return argon.verify(hashed, password);
     }
 }
