@@ -51,9 +51,14 @@ public class FeedPanel extends JPanel {
             }
         });
 
+        int limit = 0;
         for (Post p : posts) {
+            limit++;
             PostView view = new PostView(p);
             panel.add(view);
+            if(limit>30){
+                break;
+            }
         }
         JLabel title = new JLabel("Your feed");
         title.setFont(new Font("Public Sans", Font.ITALIC, 35));

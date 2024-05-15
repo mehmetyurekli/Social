@@ -18,14 +18,6 @@ public class Post {
 
     }
 
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
