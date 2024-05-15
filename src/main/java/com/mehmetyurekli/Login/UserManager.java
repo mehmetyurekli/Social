@@ -6,14 +6,14 @@ import org.bson.types.ObjectId;
 
 public class UserManager {
 
-    private static ObjectId currentUser;
     private static final MongoRepository<User> users = new MongoRepository<User>("Social", "Users", User.class);
+    private static ObjectId currentUser;
 
-    public static User getCurrentUser(){
+    public static User getCurrentUser() {
         return users.getSingle("_id", currentUser);
     }
 
-    public static void setCurrentUser(ObjectId id){
+    public static void setCurrentUser(ObjectId id) {
         currentUser = id;
     }
 }

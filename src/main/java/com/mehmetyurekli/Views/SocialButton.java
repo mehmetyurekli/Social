@@ -5,11 +5,11 @@ import java.awt.*;
 
 public class SocialButton extends JButton {
 
-    public SocialButton(){
+    public SocialButton() {
         init();
     }
 
-    private void init(){
+    private void init() {
         setContentAreaFilled(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setText("Social");

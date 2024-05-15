@@ -1,4 +1,4 @@
-package com.mehmetyurekli;
+package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
@@ -12,30 +12,30 @@ import org.bson.types.ObjectId;
 import javax.swing.*;
 import java.awt.*;
 
-public class NotificationsPanel extends JPanel implements ContentListener{
+public class NotificationsPanel extends JPanel implements ContentListener {
 
     private JPanel panel;
     private ObjectId id;
     private MongoRepository<User> repository;
     private ContentListener listener;
 
-    public NotificationsPanel(ObjectId id){
+    public NotificationsPanel(ObjectId id) {
         this.id = id;
         repository = new MongoRepository<>("Social", "Users", User.class);
         init();
     }
 
-    public NotificationsPanel(){
+    public NotificationsPanel() {
     }
 
-    private void init(){
+    private void init() {
         setLayout(new MigLayout("wrap", "[center]", "[center]"));
         this.setBackground(new Color(69, 69, 69));
         this.putClientProperty(FlatClientProperties.STYLE, "arc: 15");
 
         panel = new JPanel(new MigLayout("wrap, insets 15 15 15 15, fillx", "[left]", "[center]"));
 
-        for(ObjectId id : repository.getSingle("_id", this.id).getInvites()){
+        for (ObjectId id : repository.getSingle("_id", this.id).getInvites()) {
             NotificationPanel notification = new NotificationPanel(NotificationType.FRIEND_INVITATION, id);
             notification.setListener(this);
             panel.add(notification);
@@ -52,7 +52,7 @@ public class NotificationsPanel extends JPanel implements ContentListener{
 
     }
 
-    public void addNotification(NotificationPanel notification){
+    public void addNotification(NotificationPanel notification) {
         notification.setListener(this);
         panel.add(notification);
     }

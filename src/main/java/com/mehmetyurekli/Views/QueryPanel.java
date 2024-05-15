@@ -15,47 +15,46 @@ import java.awt.event.MouseEvent;
 public class QueryPanel extends JPanel {
 
     private User[] users;
-    private JScrollPane scrollPane;
     private boolean init;
     private ContentListener listener;
     private ObjectId clickedUser;
 
-    public QueryPanel(User[] users){
-        if(users != null){
+    public QueryPanel(User[] users) {
+        if (users != null) {
             this.users = users;
         }
         init();
     }
-    public QueryPanel(){
+
+    public QueryPanel() {
         init = true;
         init();
     }
 
-    private void init(){
+    private void init() {
         setLayout(new MigLayout("wrap", "[center]", "[center]"));
         this.setBackground(new Color(69, 69, 69));
         this.putClientProperty(FlatClientProperties.STYLE, "arc: 15");
 
         JPanel panel = new JPanel(new MigLayout("wrap", "[left]", "[center]"));
 
-        if(users == null){
-            if(!init){
+        if (users == null) {
+            if (!init) {
                 JOptionPane.showMessageDialog(this, "No matches are found!");
             }
             init = false;
-        }
-        else{
-            for(User u : users){
-                UserPanel userPanel = new UserPanel(u);
-                userPanel.addMouseListener(new MouseAdapter() {
+        } else {
+            for (User u : users) {
+                QueryResultPanel queryResultPanel = new QueryResultPanel(u);
+                queryResultPanel.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         clickedUser = u.getId();
                         listener.onContentChange(ContentChange.OTHER_PROFILE_ENTER_QUERY);
                     }
                 });
-                userPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                panel.add(userPanel);
+                queryResultPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                panel.add(queryResultPanel);
             }
         }
         JScrollPane scrollPane = new JScrollPane(panel);

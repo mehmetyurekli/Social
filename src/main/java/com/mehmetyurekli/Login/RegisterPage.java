@@ -1,8 +1,8 @@
 package com.mehmetyurekli.Login;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Builders.UserBuilder;
+import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.PasswordUtility;
 import net.miginfocom.swing.MigLayout;
@@ -12,6 +12,7 @@ import java.awt.*;
 import java.util.Arrays;
 
 public class RegisterPage extends JPanel {
+    MongoRepository<User> users;
     private JTextField name;
     private JTextField surname;
     private JComboBox<String> gender;
@@ -20,8 +21,6 @@ public class RegisterPage extends JPanel {
     private JPasswordField password;
     private JPasswordField confirmPassword;
     private JButton registerBtn;
-
-    MongoRepository<User> users;
 
 
     public RegisterPage() {
@@ -92,36 +91,23 @@ public class RegisterPage extends JPanel {
             if (isPasswordSame()) {
                 if (name.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "You must enter a name!");
-                }
-                else if (surname.getText().isEmpty()) {
+                } else if (surname.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "You must enter a surname!");
-                }
-                else if (username.getText().isEmpty()) {
+                } else if (username.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "You must enter an username!");
-                }
-                else if (email.getText().isEmpty()) {
+                } else if (email.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "You must enter an email!");
-                }
-                else if (password.getPassword() == null || password.getPassword().length < 8) {
+                } else if (password.getPassword() == null || password.getPassword().length < 8) {
                     JOptionPane.showMessageDialog(this, "Minimum password length is 8!");
-                }
-                else if (users.getSingle("username", username.getText()) != null) {
+                } else if (users.getSingle("username", username.getText()) != null) {
                     JOptionPane.showMessageDialog(this, "Username is already taken.");
-                }
-                else {
-                    User u = new UserBuilder()
-                            .withName(name.getText()).withSurname(surname.getText())
-                            .withGender((String) gender.getSelectedItem())
-                            .withUsername(username.getText())
-                            .withEmail(email.getText())
-                            .withPassword(PasswordUtility.hashPassword(password.getPassword()))
-                            .build();
+                } else {
+                    User u = new UserBuilder().withName(name.getText()).withSurname(surname.getText()).withGender((String) gender.getSelectedItem()).withUsername(username.getText()).withEmail(email.getText()).withPassword(PasswordUtility.hashPassword(password.getPassword())).build();
                     users.insertOne(u);
                     JOptionPane.showMessageDialog(this, "Successful! You can log in now.");
                 }
 
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(this, "Passwords must match!");
             }
         });

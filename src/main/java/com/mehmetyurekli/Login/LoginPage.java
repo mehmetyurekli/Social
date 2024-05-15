@@ -3,9 +3,9 @@ package com.mehmetyurekli.Login;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
-import com.mehmetyurekli.NotificationMonitor;
 import com.mehmetyurekli.SocialApp;
 import com.mehmetyurekli.Util.PasswordUtility;
+import com.mehmetyurekli.Views.NotificationMonitor;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -16,10 +16,10 @@ import java.awt.event.KeyEvent;
 
 public class LoginPage extends JPanel {
 
+    MongoRepository<User> users;
     private JTextField username;
     private JPasswordField password;
     private JButton loginBtn;
-    MongoRepository<User> users;
 
     public LoginPage() {
         init();
@@ -51,7 +51,7 @@ public class LoginPage extends JPanel {
         password.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(() -> {
                         loginBtn.doClick();
                     });
@@ -63,16 +63,13 @@ public class LoginPage extends JPanel {
         panel.add(loginBtn, "gaptop 15");
         loginBtn.addActionListener(e -> {
             User user = users.getSingle("username", username.getText());
-            if (username.getText().isEmpty()){
+            if (username.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "You must enter your username!");
-            }
-            else if (password.getPassword().length == 0){
+            } else if (password.getPassword().length == 0) {
                 JOptionPane.showMessageDialog(this, "You must enter your password!");
-            }
-            else if (user == null) {
+            } else if (user == null) {
                 JOptionPane.showMessageDialog(this, "User doesn't exist.");
-            }
-            else {
+            } else {
                 if (PasswordUtility.verifyPassword(password.getPassword(), user.getPassword())) {
                     JOptionPane.showMessageDialog(this, "Login successful.");
                     UserManager.setCurrentUser(user.getId());

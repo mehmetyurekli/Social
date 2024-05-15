@@ -13,7 +13,7 @@ public class SocialFrame extends JFrame {
     private void init() {
         setTitle("Social App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1200, 700);
+        setSize(1200, 650);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);

@@ -14,15 +14,15 @@ import static com.mongodb.client.model.Updates.push;
 
 public class MongoRepository<T> implements Repository<T> {
 
-    private MongoClient mongoClient;
-    private MongoDatabase database;
-    private MongoCollection<T> collection;
-    private String databaseName;
-    private String collectionName;
-    private Class<T> classType;
+    private final MongoClient mongoClient;
+    private final MongoDatabase database;
+    private final MongoCollection<T> collection;
+    private final String databaseName;
+    private final String collectionName;
+    private final Class<T> classType;
 
 
-    public MongoRepository(String database, String collection, Class<T> tClass){
+    public MongoRepository(String database, String collection, Class<T> tClass) {
         this.mongoClient = MongoConnector.getInstance().getMongo();
         this.database = mongoClient.getDatabase(database);
         this.collection = this.database.getCollection(collection, tClass);
@@ -41,6 +41,13 @@ public class MongoRepository<T> implements Repository<T> {
     public List<T> getAll() {
         List<T> result = new ArrayList<>();
         collection.find().forEach(t -> result.add(t));
+        return result;
+    }
+
+    @Override
+    public List<T> getAll(String field, Object value) {
+        List<T> result = new ArrayList<>();
+        collection.find(eq(field, value)).forEach(t -> result.add(t));
         return result;
     }
 

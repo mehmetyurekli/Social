@@ -7,16 +7,16 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 
-public class UserPanel extends JPanel {
+public class QueryResultPanel extends JPanel {
 
     private User user;
 
-    public UserPanel(User u){
+    public QueryResultPanel(User u) {
         this.user = u;
         init();
     }
 
-    private void init(){
+    private void init() {
         assert user != null;
         JPanel panel = new JPanel(new MigLayout("fill, insets 0 0 0 0", "[815, left]", "[60, center]"));
         panel.setBackground(new Color(69, 69, 69));

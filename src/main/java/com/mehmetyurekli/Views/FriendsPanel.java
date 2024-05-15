@@ -1,7 +1,6 @@
 package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.mehmetyurekli.Builders.UserBuilder;
 import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
@@ -11,7 +10,6 @@ import net.miginfocom.swing.MigLayout;
 import org.bson.types.ObjectId;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,19 +17,19 @@ import java.util.ArrayList;
 
 public class FriendsPanel extends JPanel {
 
-    private User user;
+    private final User user;
     private MongoRepository<User> users;
     private ContentListener listener;
     private ObjectId clickedUser;
 
-    public FriendsPanel(){
+    public FriendsPanel() {
         this.user = UserManager.getCurrentUser();
         init();
     }
 
-    private void init(){
+    private void init() {
         setLayout(new MigLayout("wrap", "[center]", "[][]"));
-        JPanel panel = new JPanel(new MigLayout("wrap, insets 5 0 5 0", "[left]", "[center]"));
+        JPanel panel = new JPanel(new MigLayout("wrap, insets 5 5 5 5", "[left]", "[center]"));
         this.setBackground(new Color(69, 69, 69));
         this.putClientProperty(FlatClientProperties.STYLE, "arc: 15");
 
@@ -39,7 +37,7 @@ public class FriendsPanel extends JPanel {
 
         ArrayList<ObjectId> friends = user.getFriends();
 
-        for(ObjectId id : friends){
+        for (ObjectId id : friends) {
             User friend = this.users.getSingle("_id", id);
             FriendPanel friendPanel = new FriendPanel(friend);
             friendPanel.addMouseListener(new MouseAdapter() {

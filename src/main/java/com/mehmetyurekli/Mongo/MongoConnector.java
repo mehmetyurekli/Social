@@ -13,24 +13,16 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 public class MongoConnector {
 
     private static MongoConnector instance;
-    private MongoClient client;
-    private String uri = "mongodb://localhost:27017";
+    private final MongoClient client;
+    private final String uri = "mongodb://localhost:27017";
     //private String uri = "mongodb+srv://mehmetyurekli:10012003@cluster0.kk2hlzc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
     private MongoConnector() {
         CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
-        CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
-                pojoCodecRegistry);
-        MongoClientSettings clientSettings = MongoClientSettings.builder()
-                .applyConnectionString(new ConnectionString(uri))
-                .codecRegistry(codecRegistry)
-                .build();
+        CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
+        MongoClientSettings clientSettings = MongoClientSettings.builder().applyConnectionString(new ConnectionString(uri)).codecRegistry(codecRegistry).build();
 
         client = MongoClients.create(clientSettings);
-    }
-
-    public MongoClient getMongo() {
-        return client;
     }
 
     public static MongoConnector getInstance() {
@@ -38,6 +30,10 @@ public class MongoConnector {
             instance = new MongoConnector();
         }
         return instance;
+    }
+
+    public MongoClient getMongo() {
+        return client;
     }
 
 }

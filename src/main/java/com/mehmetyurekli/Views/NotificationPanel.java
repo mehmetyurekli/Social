@@ -1,4 +1,4 @@
-package com.mehmetyurekli;
+package com.mehmetyurekli.Views;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Login.UserManager;
@@ -15,19 +15,19 @@ import java.awt.*;
 
 public class NotificationPanel extends JPanel {
 
-    private NotificationType type;
-    private ObjectId id;
-    private MongoRepository<User> users;
+    private final NotificationType type;
+    private final ObjectId id;
+    private final MongoRepository<User> users;
     private ContentListener listener;
 
-    public NotificationPanel(NotificationType type, ObjectId id){
+    public NotificationPanel(NotificationType type, ObjectId id) {
         this.type = type;
         this.id = id;
         users = new MongoRepository<>("Social", "Users", User.class);
         init();
     }
 
-    private void init(){
+    private void init() {
         JPanel panel = new JPanel(new MigLayout("fill, insets 15 15 15 15", "[785, left]", "[center]"));
 
         panel.setBackground(new Color(69, 69, 69));
@@ -37,11 +37,10 @@ public class NotificationPanel extends JPanel {
         title.setFont(new Font("Public Sans", Font.BOLD, 24));
         JLabel description = new JLabel();
 
-        if(type.equals(NotificationType.FRIEND_INVITATION)){
+        if (type.equals(NotificationType.FRIEND_INVITATION)) {
             title.setText("Friend Invitation");
             description.setText(users.getSingle("_id", id).getUsername() + " wants to be your friend.");
-        }
-        else{
+        } else {
             title.setText("New Post");
             description.setText(users.getSingle("_id", id).getUsername() + " shared a new post.");
         }
@@ -63,7 +62,7 @@ public class NotificationPanel extends JPanel {
         accept.addActionListener(e -> {
             users.pullFromArray("_id", UserManager.getCurrentUser().getId(), "invites", id);
             listener.onContentChange(ContentChange.NOTIFICATION_CHANGE);
-            if(!users.getSingle("_id", UserManager.getCurrentUser().getId()).isFriend(id)){
+            if (!users.getSingle("_id", UserManager.getCurrentUser().getId()).isFriend(id)) {
                 users.pushToArray("_id", UserManager.getCurrentUser().getId(), "friends", id);
                 users.pushToArray("_id", id, "friends", UserManager.getCurrentUser().getId());
             }

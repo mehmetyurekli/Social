@@ -11,12 +11,12 @@ public class FriendPanel extends JPanel {
 
     private User user;
 
-    public FriendPanel(User user){
+    public FriendPanel(User user) {
         this.user = user;
         init();
     }
 
-    private void init(){
+    private void init() {
         JPanel panel = new JPanel(new MigLayout("fill, insets 0 0 0 0", "[200, left]", "[40, center]"));
         panel.setBackground(new Color(69, 69, 69));
         panel.putClientProperty(FlatClientProperties.STYLE, "arc: 25");

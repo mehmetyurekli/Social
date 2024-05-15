@@ -3,9 +3,7 @@ package com.mehmetyurekli.Models;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class User {
 
@@ -26,7 +24,7 @@ public class User {
 
     }
 
-    public boolean isFriend(ObjectId id){
+    public boolean isFriend(ObjectId id) {
         return friends.contains(id);
     }
 

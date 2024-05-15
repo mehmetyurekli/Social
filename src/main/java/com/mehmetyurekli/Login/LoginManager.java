@@ -5,8 +5,8 @@ import com.mehmetyurekli.SocialFrame;
 import javax.swing.*;
 
 public class LoginManager {
-    private SocialFrame socialFrame;
     private static LoginManager instance;
+    private SocialFrame socialFrame;
 
     private LoginManager() {
 

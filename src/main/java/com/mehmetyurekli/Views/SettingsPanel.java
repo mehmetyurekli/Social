@@ -3,11 +3,11 @@ package com.mehmetyurekli.Views;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Login.LoginManager;
 import com.mehmetyurekli.Login.LoginPage;
-import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.ContentChange;
+import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Util.PasswordUtility;
 import net.miginfocom.swing.MigLayout;
 
@@ -29,11 +29,11 @@ public class SettingsPanel extends JPanel {
 
     private ContentListener listener;
 
-    public SettingsPanel(){
+    public SettingsPanel() {
         init();
     }
 
-    private void init(){
+    private void init() {
         setLayout(new MigLayout("fill"));
         users = new MongoRepository<>("Social", "Users", User.class);
         user = UserManager.getCurrentUser();
@@ -90,20 +90,15 @@ public class SettingsPanel extends JPanel {
         logOut.setCursor(new Cursor(Cursor.HAND_CURSOR));
         panel.add(logOut, "gapbottom 0, gaptop 0, align center, span 2");
 
-        saveBtn.addActionListener(e ->{
-            if(newUsername.getText().isEmpty() && visibility.isSelected()==user.isVisible() &&
-                    oldPassword.getPassword().length == 0 && newPassword.getPassword().length == 0 &&
-                    confirmNewPassword.getPassword().length == 0){ // no changes
+        saveBtn.addActionListener(e -> {
+            if (newUsername.getText().isEmpty() && visibility.isSelected() == user.isVisible() && oldPassword.getPassword().length == 0 && newPassword.getPassword().length == 0 && confirmNewPassword.getPassword().length == 0) { // no changes
                 listener.onContentChange(ContentChange.SETTINGS_EXIT);
-            }
-            else if(oldPassword.getPassword().length == 0){
+            } else if (oldPassword.getPassword().length == 0) {
                 JOptionPane.showMessageDialog(this, "You must enter your password to make changes.");
-            }
-
-            else{
-                if(PasswordUtility.verifyPassword(oldPassword.getPassword(), user.getPassword())){
-                    if(!newUsername.getText().isEmpty()){
-                        if(users.getSingle("username", newUsername.getText()) == null){
+            } else {
+                if (PasswordUtility.verifyPassword(oldPassword.getPassword(), user.getPassword())) {
+                    if (!newUsername.getText().isEmpty()) {
+                        if (users.getSingle("username", newUsername.getText()) == null) {
                             users.replace("username", user.getUsername(), "username", newUsername.getText());
                             JOptionPane.showMessageDialog(this, "Username changed successfully.");
                             user = UserManager.getCurrentUser();
@@ -111,22 +106,18 @@ public class SettingsPanel extends JPanel {
                             oldPassword.setText("");
                             newPassword.setText("");
                             confirmNewPassword.setText("");
-                        }
-                        else{
+                        } else {
                             JOptionPane.showMessageDialog(this, "Username is already taken.");
                         }
                     }
-                    if(newPassword.getPassword().length != 0 || confirmNewPassword.getPassword().length != 0){
-                        if(!Arrays.equals(newPassword.getPassword(), confirmNewPassword.getPassword())){
+                    if (newPassword.getPassword().length != 0 || confirmNewPassword.getPassword().length != 0) {
+                        if (!Arrays.equals(newPassword.getPassword(), confirmNewPassword.getPassword())) {
                             JOptionPane.showMessageDialog(this, "Passwords doesn't match!");
-                        }
-                        else{
-                            if(newPassword.getPassword().length < 8){
+                        } else {
+                            if (newPassword.getPassword().length < 8) {
                                 JOptionPane.showMessageDialog(this, "Minimum password length is 8!");
-                            }
-                            else{
-                                users.replace("username", user.getUsername(), "password",
-                                        PasswordUtility.hashPassword(newPassword.getPassword()));
+                            } else {
+                                users.replace("username", user.getUsername(), "password", PasswordUtility.hashPassword(newPassword.getPassword()));
                                 JOptionPane.showMessageDialog(this, "Password changed successfully.");
                                 user = UserManager.getCurrentUser();
                                 newUsername.setText("");
@@ -136,11 +127,9 @@ public class SettingsPanel extends JPanel {
                             }
                         }
                     }
-                    if(user.isVisible() != visibility.isSelected()){
-                        users.replace("username", user.getUsername(), "visible",
-                                visibility.isSelected());
-                        JOptionPane.showMessageDialog(this,
-                                "Visibility is set to " + (user.isVisible() ? "'Not visible'" : "'Visible'"));
+                    if (user.isVisible() != visibility.isSelected()) {
+                        users.replace("username", user.getUsername(), "visible", visibility.isSelected());
+                        JOptionPane.showMessageDialog(this, "Visibility is set to " + (user.isVisible() ? "'Not visible'" : "'Visible'"));
                         user = UserManager.getCurrentUser();
                         newUsername.setText("");
                         oldPassword.setText("");
@@ -148,8 +137,7 @@ public class SettingsPanel extends JPanel {
                         confirmNewPassword.setText("");
                     }
                     listener.onContentChange(ContentChange.SETTINGS_EXIT);
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Password incorrect!");
                 }
             }
@@ -165,13 +153,11 @@ public class SettingsPanel extends JPanel {
         });
 
 
-
         logOut.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Logged out successfully.");
             UserManager.setCurrentUser(null);
             LoginManager.getInstance().showPage(new LoginPage());
         });
-
 
 
         this.add(panel);

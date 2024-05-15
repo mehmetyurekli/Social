@@ -7,10 +7,7 @@ import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Util.NotificationType;
 import com.mehmetyurekli.Util.SearchEngine;
-import com.mehmetyurekli.Views.FriendsPanel;
-import com.mehmetyurekli.Views.QueryPanel;
-import com.mehmetyurekli.Views.SettingsPanel;
-import com.mehmetyurekli.Views.TopBar;
+import com.mehmetyurekli.Views.*;
 import net.miginfocom.swing.MigLayout;
 import org.bson.types.ObjectId;
 
@@ -29,14 +26,16 @@ public class SocialApp extends JPanel implements ContentListener {
     private FriendsPanel friendsPanel;
     private NotificationsPanel notificationsPanel;
     private ProfilePanel profilePanel;
+    private PostEditor postEditor;
+    private FeedPanel feedPanel;
     private String lastIndex;
     private MongoRepository<User> users;
 
-    public SocialApp(){
+    public SocialApp() {
         init();
     }
 
-    private void init(){
+    private void init() {
         users = new MongoRepository<>("Social", "Users", User.class);
         lastIndex = "0";
 
@@ -58,10 +57,20 @@ public class SocialApp extends JPanel implements ContentListener {
         friendsPanel = new FriendsPanel();
         friendsPanel.setListener(this);
 
+        postEditor = new PostEditor();
+        postEditor.setListener(this);
+
+        feedPanel = new FeedPanel();
+        feedPanel.setListener(this);
+
         contentPanel.add(settingsPanel, "0");
         contentPanel.add(queryPanel, "1");
         contentPanel.add(profilePanel, "2");
         contentPanel.add(notificationsPanel, "3");
+        contentPanel.add(postEditor, "4");
+        contentPanel.add(feedPanel, "5");
+
+        ((CardLayout) contentPanel.getLayout()).show(contentPanel, "5");
 
 
         bar = new TopBar();
@@ -72,7 +81,7 @@ public class SocialApp extends JPanel implements ContentListener {
         mainPanel.add(contentPanel, "cell 0 1, grow");
         mainPanel.add(friendsPanel, "cell 1 1, grow");
         this.add(mainPanel);
-        if(!UserManager.getCurrentUser().getInvites().isEmpty()){
+        if (!UserManager.getCurrentUser().getInvites().isEmpty()) {
             JOptionPane.showMessageDialog(this, "You have " + UserManager.getCurrentUser().getInvites().size() + " invites.");
         }
 
@@ -80,7 +89,7 @@ public class SocialApp extends JPanel implements ContentListener {
 
     @Override
     public void onContentChange(ContentChange changeType) {
-        switch(changeType){
+        switch (changeType) {
             case ContentChange.SETTINGS_ENTER:
                 SwingUtilities.invokeLater(() -> {
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
@@ -105,6 +114,30 @@ public class SocialApp extends JPanel implements ContentListener {
                     contentPanel.add(queryPanel, "1");
                     cardLayout.show(contentPanel, "1");
 
+                });
+                break;
+
+            case ContentChange.FEED_ENTER:
+                SwingUtilities.invokeLater(() -> {
+                    lastIndex = "5";
+                    CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+                    feedPanel = new FeedPanel();
+                    feedPanel.setListener(this);
+                    contentPanel.remove(5);
+                    contentPanel.add(feedPanel, "5");
+                    cardLayout.show(contentPanel, "5");
+                });
+                break;
+
+            case ContentChange.POST_CREATOR_ENTER:
+                SwingUtilities.invokeLater(() -> {
+                    lastIndex = "4";
+                    CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+                    postEditor = new PostEditor();
+                    postEditor.setListener(this);
+                    contentPanel.remove(4);
+                    contentPanel.add(postEditor, "4");
+                    cardLayout.show(contentPanel, "4");
                 });
                 break;
 
@@ -145,9 +178,8 @@ public class SocialApp extends JPanel implements ContentListener {
 
             case ContentChange.FRIEND_REQUEST:
                 ArrayList<ObjectId> ids = monitor.getNotifications();
-                for(ObjectId id : ids){
-                    NotificationPanel notification =
-                            new NotificationPanel(NotificationType.FRIEND_INVITATION, id);
+                for (ObjectId id : ids) {
+                    NotificationPanel notification = new NotificationPanel(NotificationType.FRIEND_INVITATION, id);
                     SwingUtilities.invokeLater(() -> {
                         notificationsPanel.addNotification(notification);
                         notificationsPanel.revalidate();
