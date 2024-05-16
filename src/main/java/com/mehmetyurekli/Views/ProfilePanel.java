@@ -76,7 +76,7 @@ public class ProfilePanel extends JPanel {
                 }
             }
             panel.add(name, "span 2, wrap, align left");
-            panel.add(username, "align left, gapbottom 5");
+            panel.add(username, "align left, gapbottom 5, wrap");
         }
 
         if (addFriend != null) {
@@ -84,7 +84,7 @@ public class ProfilePanel extends JPanel {
         }
 
         panel.add(new JLabel("About"), "wrap");
-        panel.add(description, "grow, span 2, wrap");
+        panel.add(description, "grow, wrap");
 
         if (UserManager.getCurrentUser().getId().equals(user.getId())) {
             panel.add(save, "span 2, align center");

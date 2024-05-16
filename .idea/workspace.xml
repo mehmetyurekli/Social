@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="search button added. post editor implemented. feed page added. users can now share posts.">
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="main page only shows up to 30 posts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Models/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/ProfilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/ProfilePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +99,7 @@
       <recent name="com.mehmetyurekli" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Social">
+  <component name="RunManager" selected="Application.Social2">
     <configuration name="Social" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.mehmetyurekli.Main" />
       <module name="Social" />
@@ -175,6 +174,7 @@
       <workItem from="1715691821433" duration="112000" />
       <workItem from="1715704369938" duration="9941000" />
       <workItem from="1715772569507" duration="12686000" />
+      <workItem from="1715786509075" duration="762000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -256,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715784303074</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="main page only shows up to 30 posts">
+      <option name="closed" value="true" />
+      <created>1715786723471</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715786723471</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +293,8 @@
     <MESSAGE value="log out added" />
     <MESSAGE value="friend notifications are added. sends notification when a new request comes." />
     <MESSAGE value="search button added. post editor implemented. feed page added. users can now share posts." />
-    <option name="LAST_COMMIT_MESSAGE" value="search button added. post editor implemented. feed page added. users can now share posts." />
+    <MESSAGE value="main page only shows up to 30 posts" />
+    <option name="LAST_COMMIT_MESSAGE" value="main page only shows up to 30 posts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
