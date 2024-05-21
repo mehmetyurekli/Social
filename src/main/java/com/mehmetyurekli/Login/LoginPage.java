@@ -73,7 +73,7 @@ public class LoginPage extends JPanel {
                 if (PasswordUtility.verifyPassword(password.getPassword(), user.getPassword())) {
                     JOptionPane.showMessageDialog(this, "Login successful.");
                     UserManager.setCurrentUser(user.getId());
-                    NotificationMonitor monitor = new NotificationMonitor(user.getId());
+                    NotificationMonitor monitor = new NotificationMonitor();
                     Thread thread = new Thread(monitor);
                     thread.start();
                     SocialApp app = new SocialApp();

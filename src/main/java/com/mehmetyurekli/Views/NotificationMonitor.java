@@ -1,5 +1,6 @@
 package com.mehmetyurekli.Views;
 
+import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.ContentChange;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 
 public class NotificationMonitor implements Runnable {
 
-    private final ObjectId id;
     private final MongoRepository<User> repository;
     private ArrayList<ObjectId> invites;
     private ArrayList<ObjectId> friends;
@@ -21,11 +21,10 @@ public class NotificationMonitor implements Runnable {
 
     private final ArrayList<ObjectId> notifications;
 
-    public NotificationMonitor(ObjectId id) {
+    public NotificationMonitor() {
         repository = new MongoRepository<>("Social", "Users", User.class);
-        this.id = id;
-        invites = repository.getSingle("_id", id).getInvites();
-        friends = repository.getSingle("_id", id).getFriends();
+        invites = repository.getSingle("_id", UserManager.getCurrentUser().getId()).getInvites();
+        friends = repository.getSingle("_id", UserManager.getCurrentUser().getId()).getFriends();
         inviteCount = invites.size();
         friendCount = friends.size();
         notifications = new ArrayList<>();
@@ -34,14 +33,14 @@ public class NotificationMonitor implements Runnable {
     @Override
     public void run() {
         while (true) {
-            invites = repository.getSingle("_id", id).getInvites();
+            invites = repository.getSingle("_id", UserManager.getCurrentUser().getId()).getInvites();
             if (invites.size() > inviteCount) {
                 for (int i = invites.size() - 1; i >= inviteCount; i--) {
                     notifications.add(invites.get(i));
                 }
                 listener.onContentChange(ContentChange.FRIEND_REQUEST);
             }
-            friends = repository.getSingle("_id", id).getFriends();
+            friends = repository.getSingle("_id", UserManager.getCurrentUser().getId()).getFriends();
             if (friends.size() != friendCount) {
                 listener.onContentChange(ContentChange.FRIEND_UPDATE);
             }

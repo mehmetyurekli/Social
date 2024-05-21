@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="unnecessary lines removed. some message dialogs are added.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/PostView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/PostView.java" afterDir="false" />
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="post view fixed">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/NotificationMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/NotificationMonitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716314928152</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="post view fixed">
+      <option name="closed" value="true" />
+      <created>1716315783451</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716315783451</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +335,8 @@
     <MESSAGE value="add friend button fixed" />
     <MESSAGE value="queries are now done in separate threads" />
     <MESSAGE value="unnecessary lines removed. some message dialogs are added." />
-    <option name="LAST_COMMIT_MESSAGE" value="unnecessary lines removed. some message dialogs are added." />
+    <MESSAGE value="post view fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="post view fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
