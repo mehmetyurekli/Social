@@ -35,11 +35,10 @@ public class NotificationsPanel extends JPanel implements ContentListener {
 
         panel = new JPanel(new MigLayout("wrap, insets 15 15 15 15, fillx", "[left]", "[center]"));
 
-        for (ObjectId id : repository.getSingle("_id", this.id).getInvites()) {
-            NotificationPanel notification = new NotificationPanel(NotificationType.FRIEND_INVITATION, id);
-            notification.setListener(this);
-            panel.add(notification);
-        }
+        JLabel title = new JLabel("Notifications");
+        title.setFont(new Font("Public Sans", Font.ITALIC, 35));
+        title.setForeground(Color.WHITE);
+        this.add(title, "align left, gapleft 15");
 
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -47,6 +46,19 @@ public class NotificationsPanel extends JPanel implements ContentListener {
         scrollPane.setBackground(new Color(69, 69, 69));
         scrollPane.setPreferredSize(new Dimension(900, 500));
         scrollPane.setForeground(Color.WHITE);
+
+        Thread queryThread = new Thread(() -> {
+            for (ObjectId id : repository.getSingle("_id", this.id).getInvites()) {
+                NotificationPanel notification = new NotificationPanel(NotificationType.FRIEND_INVITATION, id);
+                notification.setListener(this);
+                panel.add(notification);
+            }
+            SwingUtilities.invokeLater(() -> {
+                scrollPane.revalidate();
+                scrollPane.repaint();
+            });
+        });
+        queryThread.start();
 
         this.add(scrollPane);
 

@@ -94,25 +94,32 @@ public class ProfilePanel extends JPanel {
         postsTitle.setFont(new Font("Public Sans", Font.BOLD, 24));
         panel.add(postsTitle, "gaptop 10, wrap");
 
-
-        posts.addAll(postRepository.getAll("owner", user.getId()));
-        posts.sort(new Comparator<Post>() {
-            @Override
-            public int compare(Post o1, Post o2) {
-                return o2.getDate().compareTo(o1.getDate());
-            }
-        });
-
-        for (Post p : posts) {
-            panel.add(new PostView(p), "wrap");
-        }
-
-
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBackground(new Color(69, 69, 69));
         scrollPane.setPreferredSize(new Dimension(900, 500));
+
+        Thread queryThread = new Thread(() -> {
+            posts.addAll(postRepository.getAll("owner", user.getId()));
+            posts.sort(new Comparator<Post>() {
+                @Override
+                public int compare(Post o1, Post o2) {
+                    return o2.getDate().compareTo(o1.getDate());
+                }
+            });
+
+            for (Post p : posts) {
+                panel.add(new PostView(p), "wrap");
+            }
+
+            SwingUtilities.invokeLater(() -> {
+                scrollPane.revalidate();
+                scrollPane.repaint();
+            });
+        });
+        queryThread.start();
+
         this.add(scrollPane);
 
         SwingUtilities.invokeLater(() -> {
