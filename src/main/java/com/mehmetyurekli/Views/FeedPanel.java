@@ -62,6 +62,9 @@ public class FeedPanel extends JPanel {
         });
 
         Thread queryThread = new Thread(() -> {
+
+            posts.addAll(postRepository.getAll("owner", UserManager.getCurrentUser().getId()));
+
             for (ObjectId id : UserManager.getCurrentUser().getFriends()) {
                 posts.addAll(postRepository.getAll("owner", id));
             }

@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="add friend button fixed">
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="queries are now done in separate threads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FeedPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FeedPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/NotificationsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/NotificationsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/ProfilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/ProfilePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +179,8 @@
       <workItem from="1716110442262" duration="43000" />
       <workItem from="1716226907633" duration="1484000" />
       <workItem from="1716228495397" duration="67000" />
+      <workItem from="1716277233852" duration="274000" />
+      <workItem from="1716277873848" duration="99000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -279,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715843057084</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="queries are now done in separate threads">
+      <option name="closed" value="true" />
+      <created>1716277429373</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716277429374</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +317,8 @@
     <MESSAGE value="search button added. post editor implemented. feed page added. users can now share posts." />
     <MESSAGE value="main page only shows up to 30 posts" />
     <MESSAGE value="add friend button fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="add friend button fixed" />
+    <MESSAGE value="queries are now done in separate threads" />
+    <option name="LAST_COMMIT_MESSAGE" value="queries are now done in separate threads" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
