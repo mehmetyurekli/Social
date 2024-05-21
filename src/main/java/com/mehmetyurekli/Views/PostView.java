@@ -43,8 +43,10 @@ public class PostView extends JPanel {
         content.setBackground(new Color(69, 69, 69));
         content.setEditable(false);
         content.setForeground(Color.WHITE);
+        content.setLineWrap(true);
         Dimension d = content.getPreferredSize();
         d.height = 80;
+        d.width = 800;
         content.setPreferredSize(d);
 
         panel.add(title, "wrap, gaptop 5, gapleft 5");
