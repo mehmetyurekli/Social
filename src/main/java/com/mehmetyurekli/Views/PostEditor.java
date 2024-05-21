@@ -15,9 +15,7 @@ public class PostEditor extends JPanel {
 
     private JTextField titleField;
     private JTextArea contentArea;
-    private JButton shareBtn;
     private final MongoRepository<Post> posts;
-    private ContentListener listener;
 
     public PostEditor() {
         posts = new MongoRepository<>("Social", "Posts", Post.class);
@@ -38,7 +36,7 @@ public class PostEditor extends JPanel {
         d.height = 100;
         contentArea.setPreferredSize(d);
         contentArea.setLineWrap(true);
-        shareBtn = new JButton("Share");
+        JButton shareBtn = new JButton("Share");
 
 
         JLabel pageTitle = new JLabel("Create a new post");
@@ -66,12 +64,10 @@ public class PostEditor extends JPanel {
             Post post = new PostBuilder().withTitle(titleField.getText()).withContent(contentArea.getText()).withOwner(UserManager.getCurrentUser().getId()).build();
 
             posts.insertOne(post);
+            JOptionPane.showMessageDialog(this, "Post shared successfully.");
         });
 
 
     }
 
-    public void setListener(ContentListener listener) {
-        this.listener = listener;
-    }
 }

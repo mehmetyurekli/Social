@@ -14,21 +14,13 @@ import static com.mongodb.client.model.Updates.push;
 
 public class MongoRepository<T> implements Repository<T> {
 
-    private final MongoClient mongoClient;
-    private final MongoDatabase database;
     private final MongoCollection<T> collection;
-    private final String databaseName;
-    private final String collectionName;
-    private final Class<T> classType;
 
 
     public MongoRepository(String database, String collection, Class<T> tClass) {
-        this.mongoClient = MongoConnector.getInstance().getMongo();
-        this.database = mongoClient.getDatabase(database);
-        this.collection = this.database.getCollection(collection, tClass);
-        this.databaseName = database;
-        this.collectionName = collection;
-        this.classType = tClass;
+        MongoClient mongoClient = MongoConnector.getInstance().getMongo();
+        MongoDatabase database1 = mongoClient.getDatabase(database);
+        this.collection = database1.getCollection(collection, tClass);
     }
 
 

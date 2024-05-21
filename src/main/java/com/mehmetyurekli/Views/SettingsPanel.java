@@ -24,8 +24,6 @@ public class SettingsPanel extends JPanel {
     private JPasswordField newPassword;
     private JPasswordField confirmNewPassword;
     private JCheckBox visibility;
-    private JButton saveBtn;
-    private JButton cancelBtn;
 
     private ContentListener listener;
 
@@ -45,10 +43,10 @@ public class SettingsPanel extends JPanel {
         confirmNewPassword = new JPasswordField();
         visibility = new JCheckBox();
         visibility.setSelected(user.isVisible());
-        saveBtn = new JButton("Save");
+        JButton saveBtn = new JButton("Save");
         saveBtn.setMaximumSize(new Dimension(400, 40));
         saveBtn.setBackground(new Color(45, 110, 0));
-        cancelBtn = new JButton("Cancel");
+        JButton cancelBtn = new JButton("Cancel");
         cancelBtn.setMaximumSize(new Dimension(400, 40));
         cancelBtn.setBackground(new Color(161, 9, 9));
 

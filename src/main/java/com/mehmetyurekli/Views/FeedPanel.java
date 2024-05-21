@@ -18,13 +18,11 @@ import java.util.Comparator;
 public class FeedPanel extends JPanel {
 
     private final MongoRepository<Post> postRepository;
-    private final MongoRepository<User> userRepository;
     private final ArrayList<Post> posts;
     private ContentListener listener;
 
     public FeedPanel() {
         postRepository = new MongoRepository<>("Social", "Posts", Post.class);
-        userRepository = new MongoRepository<>("Social", "Users", User.class);
         posts = new ArrayList<>();
         init();
     }

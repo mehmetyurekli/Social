@@ -20,7 +20,6 @@ public class RegisterPage extends JPanel {
     private JTextField email;
     private JPasswordField password;
     private JPasswordField confirmPassword;
-    private JButton registerBtn;
 
 
     public RegisterPage() {
@@ -36,7 +35,7 @@ public class RegisterPage extends JPanel {
         email = new JTextField();
         password = new JPasswordField();
         confirmPassword = new JPasswordField();
-        registerBtn = new JButton("Sign Up");
+        JButton registerBtn = new JButton("Sign Up");
         this.users = new MongoRepository<>("Social", "Users", User.class);
 
 

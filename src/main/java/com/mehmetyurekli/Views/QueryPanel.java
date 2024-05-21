@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.ContentListener;
+import com.mehmetyurekli.Util.SearchEngine;
 import net.miginfocom.swing.MigLayout;
 import org.bson.types.ObjectId;
 
@@ -19,9 +20,9 @@ public class QueryPanel extends JPanel {
     private ContentListener listener;
     private ObjectId clickedUser;
 
-    public QueryPanel(User[] users) {
-        if (users != null) {
-            this.users = users;
+    public QueryPanel(String query) {
+        if (query != null) {
+            this.users = SearchEngine.searchUsers(query);
         }
         init();
     }

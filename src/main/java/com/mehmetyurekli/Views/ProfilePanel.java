@@ -5,7 +5,6 @@ import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.Post;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
-import com.mehmetyurekli.Util.ContentListener;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -20,7 +19,6 @@ public class ProfilePanel extends JPanel {
     private MongoRepository<User> userRepository;
     private MongoRepository<Post> postRepository;
     private ArrayList<Post> posts;
-    private ContentListener listener;
 
     public ProfilePanel() {
 
@@ -129,7 +127,7 @@ public class ProfilePanel extends JPanel {
 
         save.addActionListener(e -> {
             userRepository.replace("_id", user.getId(), "about", description.getText());
-            user = UserManager.getCurrentUser();
+            JOptionPane.showMessageDialog(this, "Changes are saved.");
         });
 
         if (addFriend != null) {
@@ -160,10 +158,5 @@ public class ProfilePanel extends JPanel {
             });
         }
 
-
-    }
-
-    public void setListener(ContentListener listener) {
-        this.listener = listener;
     }
 }

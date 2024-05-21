@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class FriendsPanel extends JPanel {
 
     private final User user;
-    private MongoRepository<User> users;
     private ContentListener listener;
     private ObjectId clickedUser;
 
@@ -33,12 +32,12 @@ public class FriendsPanel extends JPanel {
         this.setBackground(new Color(69, 69, 69));
         this.putClientProperty(FlatClientProperties.STYLE, "arc: 15");
 
-        this.users = new MongoRepository<>("Social", "Users", User.class);
+        MongoRepository<User> users = new MongoRepository<>("Social", "Users", User.class);
 
         ArrayList<ObjectId> friends = user.getFriends();
 
         for (ObjectId id : friends) {
-            User friend = this.users.getSingle("_id", id);
+            User friend = users.getSingle("_id", id);
             FriendPanel friendPanel = new FriendPanel(friend);
             friendPanel.addMouseListener(new MouseAdapter() {
                 @Override

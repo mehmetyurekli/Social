@@ -12,11 +12,6 @@ import java.awt.*;
 public class TopBar extends JPanel {
 
     private ContentListener listener;
-    private SocialButton socialBtn;
-    private Button settingsBtn;
-    private Button profileBtn;
-    private Button notificationsBtn;
-    private Button createBtn;
     private SearchBar searchBar;
 
     public TopBar() {
@@ -24,11 +19,11 @@ public class TopBar extends JPanel {
     }
 
     private void init() {
-        socialBtn = new SocialButton();
-        settingsBtn = new Button(Icons.SETTINGS);
-        profileBtn = new Button(Icons.PROFILE);
-        notificationsBtn = new Button(Icons.NOTIFICATION);
-        createBtn = new Button(Icons.ADD);
+        SocialButton socialBtn = new SocialButton();
+        Button settingsBtn = new Button(Icons.SETTINGS);
+        Button profileBtn = new Button(Icons.PROFILE);
+        Button notificationsBtn = new Button(Icons.NOTIFICATION);
+        Button createBtn = new Button(Icons.ADD);
         searchBar = new SearchBar();
 
 

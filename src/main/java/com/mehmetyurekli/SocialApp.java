@@ -6,7 +6,6 @@ import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.ContentListener;
 import com.mehmetyurekli.Util.NotificationType;
-import com.mehmetyurekli.Util.SearchEngine;
 import com.mehmetyurekli.Views.*;
 import net.miginfocom.swing.MigLayout;
 import org.bson.types.ObjectId;
@@ -52,13 +51,11 @@ public class SocialApp extends JPanel implements ContentListener {
         notificationsPanel.setListener(this);
 
         profilePanel = new ProfilePanel();
-        profilePanel.setListener(this);
 
         friendsPanel = new FriendsPanel();
         friendsPanel.setListener(this);
 
         postEditor = new PostEditor();
-        postEditor.setListener(this);
 
         feedPanel = new FeedPanel();
         feedPanel.setListener(this);
@@ -108,7 +105,7 @@ public class SocialApp extends JPanel implements ContentListener {
                 SwingUtilities.invokeLater(() -> {
                     lastIndex = "1";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
-                    queryPanel = new QueryPanel(SearchEngine.searchUsers(bar.getSearchBar().getText()));
+                    queryPanel = new QueryPanel(bar.getSearchBar().getText());
                     queryPanel.setListener(this);
                     contentPanel.remove(1);
                     contentPanel.add(queryPanel, "1");
@@ -134,7 +131,6 @@ public class SocialApp extends JPanel implements ContentListener {
                     lastIndex = "4";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
                     postEditor = new PostEditor();
-                    postEditor.setListener(this);
                     contentPanel.remove(4);
                     contentPanel.add(postEditor, "4");
                     cardLayout.show(contentPanel, "4");
@@ -146,7 +142,6 @@ public class SocialApp extends JPanel implements ContentListener {
                     lastIndex = "2";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
                     profilePanel = new ProfilePanel(UserManager.getCurrentUser());
-                    profilePanel.setListener(this);
                     contentPanel.remove(2);
                     contentPanel.add(profilePanel, "2");
                     cardLayout.show(contentPanel, "2");
@@ -158,7 +153,6 @@ public class SocialApp extends JPanel implements ContentListener {
                     lastIndex = "2";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
                     profilePanel = new ProfilePanel(users.getSingle("_id", queryPanel.getClickedUser()));
-                    profilePanel.setListener(this);
                     contentPanel.remove(2);
                     contentPanel.add(profilePanel, "2");
                     cardLayout.show(contentPanel, "2");
@@ -169,7 +163,6 @@ public class SocialApp extends JPanel implements ContentListener {
                     lastIndex = "2";
                     CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
                     profilePanel = new ProfilePanel(users.getSingle("_id", friendsPanel.getClickedUser()));
-                    profilePanel.setListener(this);
                     contentPanel.remove(2);
                     contentPanel.add(profilePanel, "2");
                     cardLayout.show(contentPanel, "2");
