@@ -5,6 +5,7 @@ import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.ContentListener;
+import com.mehmetyurekli.Util.NotificationMonitor;
 import com.mehmetyurekli.Util.NotificationType;
 import com.mehmetyurekli.Views.*;
 import net.miginfocom.swing.MigLayout;

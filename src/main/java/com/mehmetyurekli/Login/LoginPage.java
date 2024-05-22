@@ -5,7 +5,7 @@ import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.SocialApp;
 import com.mehmetyurekli.Util.PasswordUtility;
-import com.mehmetyurekli.Views.NotificationMonitor;
+import com.mehmetyurekli.Util.NotificationMonitor;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

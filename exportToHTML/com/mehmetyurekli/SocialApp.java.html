@@ -1,0 +1,250 @@
+<html>
+<head>
+<title>SocialApp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+SocialApp.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Login</span><span class="s2">.</span><span class="s1">UserManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Models</span><span class="s2">.</span><span class="s1">User</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Mongo</span><span class="s2">.</span><span class="s1">MongoRepository</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Util</span><span class="s2">.</span><span class="s1">ContentChange</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Util</span><span class="s2">.</span><span class="s1">ContentListener</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Util</span><span class="s2">.</span><span class="s1">NotificationMonitor</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Util</span><span class="s2">.</span><span class="s1">NotificationType</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mehmetyurekli</span><span class="s2">.</span><span class="s1">Views</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">miginfocom</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.</span><span class="s1">MigLayout</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">bson</span><span class="s2">.</span><span class="s1">types</span><span class="s2">.</span><span class="s1">ObjectId</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">SocialApp </span><span class="s0">extends </span><span class="s1">JPanel </span><span class="s0">implements </span><span class="s1">ContentListener </span><span class="s2">{</span>
+
+    <span class="s0">private </span><span class="s1">NotificationMonitor monitor</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">TopBar bar</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JPanel mainPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JPanel contentPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">SettingsPanel settingsPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">QueryPanel queryPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">FriendsPanel friendsPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">NotificationsPanel notificationsPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">ProfilePanel profilePanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">PostEditor postEditor</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">FeedPanel feedPanel</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String lastIndex</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">MongoRepository</span><span class="s2">&lt;</span><span class="s1">User</span><span class="s2">&gt; </span><span class="s1">users</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">SocialApp</span><span class="s2">() {</span>
+        <span class="s1">init</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private void </span><span class="s1">init</span><span class="s2">() {</span>
+        <span class="s1">users </span><span class="s2">= </span><span class="s0">new </span><span class="s1">MongoRepository</span><span class="s2">&lt;&gt;(</span><span class="s3">&quot;Social&quot;</span><span class="s2">, </span><span class="s3">&quot;Users&quot;</span><span class="s2">, </span><span class="s1">User</span><span class="s2">.</span><span class="s0">class</span><span class="s2">);</span>
+        <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;0&quot;</span><span class="s2">;</span>
+
+        <span class="s1">contentPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JPanel</span><span class="s2">(</span><span class="s0">new </span><span class="s1">CardLayout</span><span class="s2">());</span>
+        <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">setPreferredSize</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Dimension</span><span class="s2">(</span><span class="s4">900</span><span class="s2">, </span><span class="s4">500</span><span class="s2">));</span>
+
+        <span class="s1">settingsPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">SettingsPanel</span><span class="s2">();</span>
+        <span class="s1">settingsPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+
+        <span class="s1">queryPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">QueryPanel</span><span class="s2">();</span>
+        <span class="s1">queryPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+
+        <span class="s1">notificationsPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">NotificationsPanel</span><span class="s2">(</span><span class="s1">UserManager</span><span class="s2">.</span><span class="s1">getCurrentUser</span><span class="s2">().</span><span class="s1">getId</span><span class="s2">());</span>
+        <span class="s1">notificationsPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+
+        <span class="s1">profilePanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ProfilePanel</span><span class="s2">();</span>
+
+        <span class="s1">friendsPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FriendsPanel</span><span class="s2">();</span>
+        <span class="s1">friendsPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+
+        <span class="s1">postEditor </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PostEditor</span><span class="s2">();</span>
+
+        <span class="s1">feedPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FeedPanel</span><span class="s2">();</span>
+        <span class="s1">feedPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+
+        <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">settingsPanel</span><span class="s2">, </span><span class="s3">&quot;0&quot;</span><span class="s2">);</span>
+        <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">queryPanel</span><span class="s2">, </span><span class="s3">&quot;1&quot;</span><span class="s2">);</span>
+        <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">profilePanel</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">);</span>
+        <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">notificationsPanel</span><span class="s2">, </span><span class="s3">&quot;3&quot;</span><span class="s2">);</span>
+        <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">postEditor</span><span class="s2">, </span><span class="s3">&quot;4&quot;</span><span class="s2">);</span>
+        <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">feedPanel</span><span class="s2">, </span><span class="s3">&quot;5&quot;</span><span class="s2">);</span>
+
+        <span class="s2">((</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">()).</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;5&quot;</span><span class="s2">);</span>
+
+
+        <span class="s1">bar </span><span class="s2">= </span><span class="s0">new </span><span class="s1">TopBar</span><span class="s2">();</span>
+        <span class="s1">bar</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+
+        <span class="s1">mainPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JPanel</span><span class="s2">(</span><span class="s0">new </span><span class="s1">MigLayout</span><span class="s2">(</span><span class="s3">&quot;fill, insets 0 0 0 0&quot;</span><span class="s2">, </span><span class="s3">&quot;[900][250]&quot;</span><span class="s2">, </span><span class="s3">&quot;[][500]&quot;</span><span class="s2">));</span>
+        <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">bar</span><span class="s2">, </span><span class="s3">&quot;span 2, wrap&quot;</span><span class="s2">);</span>
+        <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;cell 0 1, grow&quot;</span><span class="s2">);</span>
+        <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">friendsPanel</span><span class="s2">, </span><span class="s3">&quot;cell 1 1, grow&quot;</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">mainPanel</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(!</span><span class="s1">UserManager</span><span class="s2">.</span><span class="s1">getCurrentUser</span><span class="s2">().</span><span class="s1">getInvites</span><span class="s2">().</span><span class="s1">isEmpty</span><span class="s2">()) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s3">&quot;You have &quot; </span><span class="s2">+ </span><span class="s1">UserManager</span><span class="s2">.</span><span class="s1">getCurrentUser</span><span class="s2">().</span><span class="s1">getInvites</span><span class="s2">().</span><span class="s1">size</span><span class="s2">() + </span><span class="s3">&quot; invites.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onContentChange</span><span class="s2">(</span><span class="s1">ContentChange changeType</span><span class="s2">) {</span>
+        <span class="s0">switch </span><span class="s2">(</span><span class="s1">changeType</span><span class="s2">) {</span>
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">SETTINGS_ENTER</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;0&quot;</span><span class="s2">);</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">SETTINGS_EXIT</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s2">((</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">()).</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s1">lastIndex</span><span class="s2">);</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">QUERY_ENTER</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;1&quot;</span><span class="s2">;</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">queryPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">QueryPanel</span><span class="s2">(</span><span class="s1">bar</span><span class="s2">.</span><span class="s1">getSearchBar</span><span class="s2">().</span><span class="s1">getText</span><span class="s2">());</span>
+                    <span class="s1">queryPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s4">1</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">queryPanel</span><span class="s2">, </span><span class="s3">&quot;1&quot;</span><span class="s2">);</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;1&quot;</span><span class="s2">);</span>
+
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">FEED_ENTER</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;5&quot;</span><span class="s2">;</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">feedPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FeedPanel</span><span class="s2">();</span>
+                    <span class="s1">feedPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s4">5</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">feedPanel</span><span class="s2">, </span><span class="s3">&quot;5&quot;</span><span class="s2">);</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;5&quot;</span><span class="s2">);</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">POST_CREATOR_ENTER</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;4&quot;</span><span class="s2">;</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">postEditor </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PostEditor</span><span class="s2">();</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s4">4</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">postEditor</span><span class="s2">, </span><span class="s3">&quot;4&quot;</span><span class="s2">);</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;4&quot;</span><span class="s2">);</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">PROFILE_ENTER</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;2&quot;</span><span class="s2">;</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">profilePanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ProfilePanel</span><span class="s2">(</span><span class="s1">UserManager</span><span class="s2">.</span><span class="s1">getCurrentUser</span><span class="s2">());</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s4">2</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">profilePanel</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">);</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">);</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">OTHER_PROFILE_ENTER_QUERY</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;2&quot;</span><span class="s2">;</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">profilePanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ProfilePanel</span><span class="s2">(</span><span class="s1">users</span><span class="s2">.</span><span class="s1">getSingle</span><span class="s2">(</span><span class="s3">&quot;_id&quot;</span><span class="s2">, </span><span class="s1">queryPanel</span><span class="s2">.</span><span class="s1">getClickedUser</span><span class="s2">()));</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s4">2</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">profilePanel</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">);</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">);</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">OTHER_PROFILE_ENTER_FRIENDS</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;2&quot;</span><span class="s2">;</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">profilePanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ProfilePanel</span><span class="s2">(</span><span class="s1">users</span><span class="s2">.</span><span class="s1">getSingle</span><span class="s2">(</span><span class="s3">&quot;_id&quot;</span><span class="s2">, </span><span class="s1">friendsPanel</span><span class="s2">.</span><span class="s1">getClickedUser</span><span class="s2">()));</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s4">2</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">profilePanel</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">);</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">);</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">FRIEND_REQUEST</span><span class="s2">:</span>
+                <span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">ObjectId</span><span class="s2">&gt; </span><span class="s1">ids </span><span class="s2">= </span><span class="s1">monitor</span><span class="s2">.</span><span class="s1">getNotifications</span><span class="s2">();</span>
+                <span class="s0">for </span><span class="s2">(</span><span class="s1">ObjectId id </span><span class="s2">: </span><span class="s1">ids</span><span class="s2">) {</span>
+                    <span class="s1">NotificationPanel notification </span><span class="s2">= </span><span class="s0">new </span><span class="s1">NotificationPanel</span><span class="s2">(</span><span class="s1">NotificationType</span><span class="s2">.</span><span class="s1">FRIEND_INVITATION</span><span class="s2">, </span><span class="s1">id</span><span class="s2">);</span>
+                    <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                        <span class="s1">notificationsPanel</span><span class="s2">.</span><span class="s1">addNotification</span><span class="s2">(</span><span class="s1">notification</span><span class="s2">);</span>
+                        <span class="s1">notificationsPanel</span><span class="s2">.</span><span class="s1">revalidate</span><span class="s2">();</span>
+                        <span class="s1">notificationsPanel</span><span class="s2">.</span><span class="s1">repaint</span><span class="s2">();</span>
+                    <span class="s2">});</span>
+                <span class="s2">}</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s3">&quot;You got &quot; </span><span class="s2">+ </span><span class="s1">ids</span><span class="s2">.</span><span class="s1">size</span><span class="s2">() + </span><span class="s3">&quot; new notifications.&quot;</span><span class="s2">);</span>
+
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">NOTIFICATIONS_ENTER</span><span class="s2">, </span><span class="s1">ContentChange</span><span class="s2">.</span><span class="s1">NOTIFICATION_CHANGE</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">lastIndex </span><span class="s2">= </span><span class="s3">&quot;3&quot;</span><span class="s2">;</span>
+                    <span class="s1">CardLayout cardLayout </span><span class="s2">= (</span><span class="s1">CardLayout</span><span class="s2">) </span><span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">getLayout</span><span class="s2">();</span>
+                    <span class="s1">notificationsPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">NotificationsPanel</span><span class="s2">(</span><span class="s1">UserManager</span><span class="s2">.</span><span class="s1">getCurrentUser</span><span class="s2">().</span><span class="s1">getId</span><span class="s2">());</span>
+                    <span class="s1">notificationsPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s4">3</span><span class="s2">);</span>
+                    <span class="s1">contentPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">notificationsPanel</span><span class="s2">, </span><span class="s3">&quot;3&quot;</span><span class="s2">);</span>
+                    <span class="s1">cardLayout</span><span class="s2">.</span><span class="s1">show</span><span class="s2">(</span><span class="s1">contentPanel</span><span class="s2">, </span><span class="s3">&quot;3&quot;</span><span class="s2">);</span>
+
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s1">friendsPanel</span><span class="s2">);</span>
+                    <span class="s1">friendsPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FriendsPanel</span><span class="s2">();</span>
+                    <span class="s1">friendsPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">friendsPanel</span><span class="s2">, </span><span class="s3">&quot;cell 1 1, grow&quot;</span><span class="s2">);</span>
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">revalidate</span><span class="s2">();</span>
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">repaint</span><span class="s2">();</span>
+
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s0">case </span><span class="s1">FRIEND_UPDATE</span><span class="s2">:</span>
+                <span class="s1">SwingUtilities</span><span class="s2">.</span><span class="s1">invokeLater</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s1">friendsPanel</span><span class="s2">);</span>
+                    <span class="s1">friendsPanel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FriendsPanel</span><span class="s2">();</span>
+                    <span class="s1">friendsPanel</span><span class="s2">.</span><span class="s1">setListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">friendsPanel</span><span class="s2">, </span><span class="s3">&quot;cell 1 1, grow&quot;</span><span class="s2">);</span>
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">revalidate</span><span class="s2">();</span>
+                    <span class="s1">mainPanel</span><span class="s2">.</span><span class="s1">repaint</span><span class="s2">();</span>
+                <span class="s2">});</span>
+                <span class="s0">break</span><span class="s2">;</span>
+
+        <span class="s2">}</span>
+
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">NotificationMonitor getMonitor</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">monitor</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setMonitor</span><span class="s2">(</span><span class="s1">NotificationMonitor monitor</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">monitor </span><span class="s2">= </span><span class="s1">monitor</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

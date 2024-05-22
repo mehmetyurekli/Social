@@ -1,10 +1,8 @@
-package com.mehmetyurekli.Views;
+package com.mehmetyurekli.Util;
 
 import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
-import com.mehmetyurekli.Util.ContentChange;
-import com.mehmetyurekli.Util.ContentListener;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
@@ -33,6 +31,13 @@ public class NotificationMonitor implements Runnable {
     @Override
     public void run() {
         while (true) {
+            while(UserManager.getCurrentUser() == null){
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             invites = repository.getSingle("_id", UserManager.getCurrentUser().getId()).getInvites();
             if (invites.size() > inviteCount) {
                 for (int i = invites.size() - 1; i >= inviteCount; i--) {

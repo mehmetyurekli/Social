@@ -3,7 +3,6 @@ package com.mehmetyurekli.Views;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.mehmetyurekli.Login.UserManager;
 import com.mehmetyurekli.Models.Post;
-import com.mehmetyurekli.Models.User;
 import com.mehmetyurekli.Mongo.MongoRepository;
 import com.mehmetyurekli.Util.ContentChange;
 import com.mehmetyurekli.Util.ContentListener;
@@ -82,7 +81,7 @@ public class FeedPanel extends JPanel {
                     break;
                 }
             }
-            SwingUtilities.invokeLater(()-> {
+            SwingUtilities.invokeLater(()-> { //EDT
                 scrollPane.revalidate();
                 scrollPane.repaint();
             });
