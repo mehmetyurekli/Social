@@ -9,20 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="notifications fixed">
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/mehmetyurekli/Main.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/mehmetyurekli/SocialApp.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/mehmetyurekli/SocialFrame.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/mehmetyurekli/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MongoConnectorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PasswordUtilityTest.java" afterDir="false" />
+    <list default="true" id="97176557-34ff-4279-a652-141a32b03727" name="Changes" comment="simple junit tests are added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/SocialApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FeedPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/FeedPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/NotificationMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Util/NotificationMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SocialButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Views/SocialButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Mongo/MongoConnector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +67,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
-    "Application.Social.executor": "Run",
+    "Application.Social.executor": "Debug",
     "Application.Social2.executor": "Run",
     "JUnit.PasswordUtilityTest.hashesNotEqual.executor": "Run",
     "JUnit.PasswordUtilityTest.testGeneratePassword.executor": "Run",
@@ -227,7 +216,8 @@
       <workItem from="1716228495397" duration="67000" />
       <workItem from="1716277233852" duration="274000" />
       <workItem from="1716277873848" duration="99000" />
-      <workItem from="1716393995131" duration="4858000" />
+      <workItem from="1716393995131" duration="5068000" />
+      <workItem from="1716460273960" duration="389000" />
     </task>
     <task id="LOCAL-00001" summary="login system done.">
       <option name="closed" value="true" />
@@ -357,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716316383186</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="simple junit tests are added">
+      <option name="closed" value="true" />
+      <created>1716400149054</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716400149054</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +390,8 @@
     <MESSAGE value="unnecessary lines removed. some message dialogs are added." />
     <MESSAGE value="post view fixed" />
     <MESSAGE value="notifications fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="notifications fixed" />
+    <MESSAGE value="simple junit tests are added" />
+    <option name="LAST_COMMIT_MESSAGE" value="simple junit tests are added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -401,6 +400,11 @@
           <properties class="org.bson.codecs.configuration.CodecConfigurationException" package="org.bson.codecs.configuration" />
           <option name="timeStamp" value="17" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mehmetyurekli/Login/LoginPage.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

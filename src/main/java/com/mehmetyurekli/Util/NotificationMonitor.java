@@ -31,12 +31,8 @@ public class NotificationMonitor implements Runnable {
     @Override
     public void run() {
         while (true) {
-            while(UserManager.getCurrentUser() == null){
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+            if(UserManager.getCurrentUser() == null){
+                return;
             }
             invites = repository.getSingle("_id", UserManager.getCurrentUser().getId()).getInvites();
             if (invites.size() > inviteCount) {
