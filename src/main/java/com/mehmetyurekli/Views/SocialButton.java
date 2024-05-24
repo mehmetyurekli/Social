@@ -5,6 +5,8 @@ import java.awt.*;
 
 public class SocialButton extends JButton {
 
+    // It's the text button on TopBar
+
     public SocialButton() {
         init();
     }

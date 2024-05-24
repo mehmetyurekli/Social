@@ -9,6 +9,8 @@ import java.awt.*;
 
 public class QueryResultPanel extends JPanel {
 
+    /* lists all matching results from search engine in many QueryPanels */
+
     private User user;
 
     public QueryResultPanel(User u) {

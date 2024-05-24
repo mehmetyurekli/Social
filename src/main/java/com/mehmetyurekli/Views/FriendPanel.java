@@ -7,7 +7,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 
-public class FriendPanel extends JPanel {
+public class FriendPanel extends JPanel { //Single panel containing a username.
 
     private User user;
 

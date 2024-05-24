@@ -2,7 +2,7 @@ package com.mehmetyurekli.Builders;
 
 import com.mehmetyurekli.Models.User;
 
-public class UserBuilder {
+public class UserBuilder { //user builder class
     private final User user;
 
     public UserBuilder() {

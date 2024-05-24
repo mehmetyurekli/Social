@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 public class NotificationMonitor implements Runnable {
 
+    /* This monitor checks every second for a new notification or change of friend number.
+    * notifies its listener(SocialApp) */
+
     private final MongoRepository<User> repository;
     private ArrayList<ObjectId> invites;
     private ArrayList<ObjectId> friends;

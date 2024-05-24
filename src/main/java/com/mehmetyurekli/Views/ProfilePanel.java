@@ -15,6 +15,8 @@ import java.util.Comparator;
 
 public class ProfilePanel extends JPanel {
 
+    /* It's the whole profile page. Holds username, name-surname, about field and users all posts */
+
     private User user;
     private MongoRepository<User> userRepository;
     private MongoRepository<Post> postRepository;
@@ -98,7 +100,7 @@ public class ProfilePanel extends JPanel {
         scrollPane.setBackground(new Color(69, 69, 69));
         scrollPane.setPreferredSize(new Dimension(900, 500));
 
-        Thread queryThread = new Thread(() -> {
+        Thread queryThread = new Thread(() -> { //Queries are done in separate threads so the UI won't freeze.
             posts.addAll(postRepository.getAll("owner", user.getId()));
             posts.sort(new Comparator<Post>() {
                 @Override
@@ -111,7 +113,7 @@ public class ProfilePanel extends JPanel {
                 panel.add(new PostView(p), "wrap");
             }
 
-            SwingUtilities.invokeLater(() -> {
+            SwingUtilities.invokeLater(() -> { //EDT
                 scrollPane.revalidate();
                 scrollPane.repaint();
             });

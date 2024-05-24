@@ -15,6 +15,8 @@ import java.awt.event.KeyEvent;
 
 public class SearchBar extends JPanel {
 
+    /* searchBar inside the TopBar. Informs its listener when a new query is made  */
+
     private JTextField field;
     private ContentListener listener;
 

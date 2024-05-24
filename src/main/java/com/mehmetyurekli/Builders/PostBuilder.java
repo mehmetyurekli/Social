@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 import java.util.Date;
 
-public class PostBuilder {
+public class PostBuilder { //post builder class
     private final Post post;
 
     public PostBuilder() {

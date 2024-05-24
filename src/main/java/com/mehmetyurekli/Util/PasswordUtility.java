@@ -3,7 +3,7 @@ package com.mehmetyurekli.Util;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
-public class PasswordUtility {
+public class PasswordUtility { //it is used to hash and verify user's passwords
 
     private static final Argon2 argon = Argon2Factory.create();
 

@@ -13,6 +13,8 @@ import java.awt.*;
 
 public class PostEditor extends JPanel {
 
+    /* Post creator panel */
+
     private JTextField titleField;
     private JTextArea contentArea;
     private final MongoRepository<Post> posts;

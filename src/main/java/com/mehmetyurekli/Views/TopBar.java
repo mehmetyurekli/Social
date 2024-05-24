@@ -11,6 +11,8 @@ import java.awt.*;
 
 public class TopBar extends JPanel {
 
+    //This panel lets user navigate through the app. Notifies the SocialApp when a page changes.
+
     private ContentListener listener;
     private SearchBar searchBar;
 

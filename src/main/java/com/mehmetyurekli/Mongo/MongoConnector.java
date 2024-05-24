@@ -10,7 +10,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
-public class MongoConnector {
+public class MongoConnector { //singleton mongoConnector class. creates a connection to database
 
     private static MongoConnector instance;
     private final MongoClient client;

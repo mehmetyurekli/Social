@@ -15,6 +15,8 @@ import java.awt.event.MouseEvent;
 
 public class QueryPanel extends JPanel {
 
+    /* Panel that contains a user's username-Name Surname */
+
     private User[] users;
     private boolean init;
     private ContentListener listener;

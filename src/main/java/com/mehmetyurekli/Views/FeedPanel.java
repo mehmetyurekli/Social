@@ -16,6 +16,7 @@ import java.util.Comparator;
 
 public class FeedPanel extends JPanel {
 
+    /* This panel holds users own posts and user's friends posts */
     private final MongoRepository<Post> postRepository;
     private final ArrayList<Post> posts;
     private ContentListener listener;
@@ -58,7 +59,7 @@ public class FeedPanel extends JPanel {
             listener.onContentChange(ContentChange.FEED_ENTER);
         });
 
-        Thread queryThread = new Thread(() -> {
+        Thread queryThread = new Thread(() -> { //queries are done in a separate thread so ui wont freeze.
 
             posts.addAll(postRepository.getAll("owner", UserManager.getCurrentUser().getId()));
 

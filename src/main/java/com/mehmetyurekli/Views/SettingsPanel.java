@@ -17,6 +17,8 @@ import java.util.Arrays;
 
 public class SettingsPanel extends JPanel {
 
+    /* Settings panel. lets user change password/username or visibility */
+
     private MongoRepository<User> users;
     private User user;
     private JTextField newUsername;

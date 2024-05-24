@@ -14,6 +14,8 @@ import static com.mongodb.client.model.Updates.push;
 
 public class MongoRepository<T> implements Repository<T> {
 
+    /* MongoRepository handles different queries. */
+
     private final MongoCollection<T> collection;
 
 

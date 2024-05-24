@@ -11,7 +11,7 @@ public class Main {
         UIManager.setLookAndFeel(new FlatMacDarkLaf());
         UIManager.put("TextComponent.arc", 15);
         UIManager.put("Component.focusWidth", 0);
-        SwingUtilities.invokeLater(() -> new SocialFrame().add(new LoginPage()));
+        SwingUtilities.invokeLater(() -> new SocialFrame().add(new LoginPage())); //init new login page
 
     }
 }

@@ -6,7 +6,7 @@ import com.mehmetyurekli.Mongo.MongoRepository;
 
 import java.util.*;
 
-public class SearchEngine {
+public class SearchEngine { //does a similarity check using Jaro-Winkler algorithm.
 
     public static User[] searchUsers(String query){
         if(query == null){
@@ -35,7 +35,7 @@ public class SearchEngine {
                     max = similarity;
                 }
             }
-            if (max > 0.75) {
+            if (max > 0.75) { //its a match if the similarity is at least 75%
                 similarityMap.put(u, max);
             }
         }

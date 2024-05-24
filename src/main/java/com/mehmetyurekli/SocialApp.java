@@ -15,7 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class SocialApp extends JPanel implements ContentListener {
+public class SocialApp extends JPanel implements ContentListener { //This is the main page
 
     private NotificationMonitor monitor;
     private TopBar bar;
@@ -39,27 +39,27 @@ public class SocialApp extends JPanel implements ContentListener {
         users = new MongoRepository<>("Social", "Users", User.class);
         lastIndex = "0";
 
-        contentPanel = new JPanel(new CardLayout());
+        contentPanel = new JPanel(new CardLayout()); //bottom left panel. holds every panel using cardLayout
         contentPanel.setPreferredSize(new Dimension(900, 500));
 
         settingsPanel = new SettingsPanel();
-        settingsPanel.setListener(this);
+        settingsPanel.setListener(this); //this panel listens it for any change.
 
         queryPanel = new QueryPanel();
-        queryPanel.setListener(this);
+        queryPanel.setListener(this); //this panel listens it for any change.
 
         notificationsPanel = new NotificationsPanel(UserManager.getCurrentUser().getId());
-        notificationsPanel.setListener(this);
+        notificationsPanel.setListener(this); //this panel listens it for any change.
 
         profilePanel = new ProfilePanel();
 
         friendsPanel = new FriendsPanel();
-        friendsPanel.setListener(this);
+        friendsPanel.setListener(this); //this panel listens it for any change.
 
         postEditor = new PostEditor();
 
         feedPanel = new FeedPanel();
-        feedPanel.setListener(this);
+        feedPanel.setListener(this); //this panel listens it for any change.
 
         contentPanel.add(settingsPanel, "0");
         contentPanel.add(queryPanel, "1");
@@ -86,7 +86,7 @@ public class SocialApp extends JPanel implements ContentListener {
     }
 
     @Override
-    public void onContentChange(ContentChange changeType) {
+    public void onContentChange(ContentChange changeType) { //changes
         switch (changeType) {
             case ContentChange.SETTINGS_ENTER:
                 SwingUtilities.invokeLater(() -> {

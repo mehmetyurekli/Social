@@ -2,7 +2,7 @@ package com.mehmetyurekli.Mongo;
 
 import java.util.List;
 
-public interface Repository<T> {
+public interface Repository<T> { //generic repository interface
 
     T getSingle(String field, Object value);
 

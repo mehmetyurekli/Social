@@ -15,6 +15,8 @@ import java.awt.*;
 
 public class NotificationPanel extends JPanel {
 
+    /* Single notification panel with accept/decline buttons */
+
     private final NotificationType type;
     private final ObjectId id;
     private final MongoRepository<User> users;

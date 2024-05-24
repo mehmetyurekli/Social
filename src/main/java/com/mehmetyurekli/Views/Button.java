@@ -5,7 +5,7 @@ import com.mehmetyurekli.Util.Icons;
 import javax.swing.*;
 import java.awt.*;
 
-public class Button extends JButton {
+public class Button extends JButton { //top bar buttons (image icons)
 
     ImageIcon icon;
 

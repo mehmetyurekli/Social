@@ -15,7 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class FriendsPanel extends JPanel {
+public class FriendsPanel extends JPanel { //Holds current user's friends in many friend panels
 
     private final User user;
     private ContentListener listener;

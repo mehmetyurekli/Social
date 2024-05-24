@@ -1,6 +1,6 @@
 package com.mehmetyurekli.Util;
 
-public enum ContentChange {
+public enum ContentChange { //content change type enum
     SETTINGS_EXIT,
     SETTINGS_ENTER,
     OTHER_PROFILE_ENTER_QUERY,

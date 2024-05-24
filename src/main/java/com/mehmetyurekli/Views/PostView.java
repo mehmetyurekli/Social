@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 
 public class PostView extends JPanel {
 
+    /* Panel that holds a single post */
+
     private final Post post;
 
     public PostView(Post post) {

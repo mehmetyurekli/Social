@@ -14,6 +14,8 @@ import java.awt.*;
 
 public class NotificationsPanel extends JPanel implements ContentListener {
 
+    /* Stores notifications in a JScrollPane */
+
     private JPanel panel;
     private ObjectId id;
     private MongoRepository<User> repository;
