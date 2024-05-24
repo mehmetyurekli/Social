@@ -6,7 +6,7 @@
 
 <h2>Features</h2>
 <ul>
-  <li>Create posts with titles and content.</li>
+  <li>Create text based posts with titles and content.</li>
   <li>View friends' posts on the feed page.</li>
   <li>Update username, password, or profile visibility (allowing other users to find you via search).</li>
   <li>Add descriptions to your profile, with posts displayed in reverse chronological order.</li>
@@ -20,7 +20,7 @@
   <li>Singleton</li>
   <li>Observer</li>
   <li>Builder</li>
-  <li>Repository</li>
+  <li>Repository(Generic)</li>
   <li>Composite</li>
   <li>Command</li>
 </ul>
